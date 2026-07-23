@@ -1,5 +1,5 @@
 {
- "savedAt": "2026-07-23T00:00:00.000Z",
+ "savedAt": "2026-07-23T04:36:35.389Z",
  "items": [
   {
    "id": 1,
@@ -549,8 +549,8 @@
    "id": 69,
    "category": "건강과 몸",
    "title": "한 달간 매일 7시간 이상 숙면하기",
-   "done": false,
-   "doneDate": "",
+   "done": true,
+   "doneDate": "2026-07-23",
    "note": ""
   },
   {

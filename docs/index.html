@@ -584,6 +584,7 @@ const catIcon = c => (CAT_META[c] && CAT_META[c].icon) || "🌟";
 /* ============ 저장소 ============ */
 const LS_KEY = "bucketList.v1";
 let savedAt = null;              // 데이터 마지막 수정 시각(ISO)
+let tombs = {};                  // 삭제 기록 {id: 삭제시각ISO} — 기기 간 병합용
 let items = loadLocal();
 let state = { cat:"all", status:"all", q:"", view:"list" };
 let editingId = null, deletingId = null;
@@ -599,6 +600,7 @@ function loadLocal(){
       }
       if(parsed && Array.isArray(parsed.items) && parsed.items.length){
         savedAt = parsed.savedAt || null;
+        tombs = parsed.deleted || {};
         return parsed.items;
       }
     }
@@ -608,11 +610,38 @@ function loadLocal(){
 }
 function persist(){
   savedAt = new Date().toISOString();
-  localStorage.setItem(LS_KEY, JSON.stringify({savedAt, items}));
+  localStorage.setItem(LS_KEY, JSON.stringify({savedAt, items, deleted: tombs}));
   scheduleSync();                 // GitHub 연동 시 자동 커밋
 }
 function persistLocalOnly(){
-  localStorage.setItem(LS_KEY, JSON.stringify({savedAt, items}));
+  localStorage.setItem(LS_KEY, JSON.stringify({savedAt, items, deleted: tombs}));
+}
+
+/* --- 항목 단위 병합: 두 데이터 중 항목별로 더 최신(updatedAt) 쪽을 채택 ---
+   문서 전체를 덮어쓰지 않으므로, 오래된 탭·다른 기기가 저장해도
+   서로의 변경(완료 체크, 수정, 추가, 삭제)이 유실되지 않는다. */
+function ts(x){ return Date.parse(x || 0) || 0; }
+function mergeData(localItems, localTombs, remote){
+  const rItems = (remote && Array.isArray(remote.items)) ? remote.items : [];
+  const rTombs = (remote && remote.deleted) || {};
+  const mTombs = {...rTombs};
+  for(const [id, t] of Object.entries(localTombs || {})){
+    if(ts(t) > ts(mTombs[id])) mTombs[id] = t;
+  }
+  const map = new Map();
+  for(const it of rItems) map.set(it.id, it);
+  for(const it of localItems){
+    const r = map.get(it.id);
+    if(!r || ts(it.updatedAt) >= ts(r.updatedAt)) map.set(it.id, it);
+  }
+  const merged = [];
+  for(const it of map.values()){
+    const delAt = mTombs[it.id];
+    if(delAt && ts(delAt) >= ts(it.updatedAt)) continue;  // 삭제가 더 최신
+    merged.push(it);
+  }
+  merged.sort((a,b)=>a.id-b.id);
+  return {items: merged, tombs: mTombs};
 }
 
 /* ============ GitHub 동기화 ============ */
@@ -675,11 +704,19 @@ async function fetchRemote(){
   return await res.json();
 }
 
-/* --- 원격 쓰기: docs/data.json에 커밋 --- */
+/* --- 원격 쓰기: 원격을 먼저 읽어 항목 단위 병합 후 docs/data.json에 커밋 --- */
 async function pushRemote(){
+  try{
+    const remote = await fetchRemote();   // 최신 sha 확보 + 병합용 데이터
+    if(remote){
+      const m = mergeData(items, tombs, remote);
+      items = m.items; tombs = m.tombs;
+      persistLocalOnly(); render();
+    }
+  }catch(e){ /* 원격 읽기 실패 시 로컬 기준으로 저장 시도 */ }
   const body = {
     message: "chore: 버킷리스트 업데이트 (홈페이지에서 저장)",
-    content: b64EncodeUtf8(JSON.stringify({savedAt, items}, null, 1)),
+    content: b64EncodeUtf8(JSON.stringify({savedAt, items, deleted: tombs}, null, 1)),
     branch: gh.branch
   };
   if(ghSha) body.sha = ghSha;
@@ -727,14 +764,14 @@ async function initRemote(){
   try{
     const remote = await fetchRemote();
     if(remote && Array.isArray(remote.items) && remote.items.length){
-      const rT = Date.parse(remote.savedAt || 0) || 0;
-      const lT = Date.parse(savedAt || 0) || 0;
-      if(rT > lT){
-        items = remote.items; savedAt = remote.savedAt;
-        persistLocalOnly(); render();
-      }else if(lT > rT && gh.token){
-        scheduleSync();          // 로컬이 더 최신이면 원격에 반영
-      }
+      const m = mergeData(items, tombs, remote);
+      const changedLocal  = JSON.stringify(m.items) !== JSON.stringify(items);
+      const differsRemote = JSON.stringify(m.items) !== JSON.stringify(remote.items);
+      items = m.items; tombs = m.tombs;
+      if(ts(remote.savedAt) > ts(savedAt)) savedAt = remote.savedAt;
+      persistLocalOnly();
+      if(changedLocal) render();
+      if(differsRemote && gh.token) scheduleSync();  // 병합 결과를 원격에도 반영
     }
     if(gh.token){
       if(!syncTimer && !syncing) setPill("ok","✅ GitHub 연동됨 · " + gh.owner + "/" + gh.repo);
@@ -863,7 +900,8 @@ async function pullFromGh(showMsg){
     setPill("busy","⬇ GitHub에서 불러오는 중…");
     const remote = await fetchRemote();
     if(remote && Array.isArray(remote.items)){
-      items = remote.items; savedAt = remote.savedAt || new Date().toISOString();
+      items = remote.items; tombs = remote.deleted || {};
+      savedAt = remote.savedAt || new Date().toISOString();
       persistLocalOnly(); render();
       setPill(gh.token ? "ok" : "off", gh.token ? "✅ GitHub 연동됨 · " + gh.owner + "/" + gh.repo
                                                : "⚪ 미연동 · 이 브라우저에만 저장됨 (클릭해 연동)");
@@ -1067,6 +1105,7 @@ function toggleDone(id){
   const it = items.find(i=>i.id===id);
   if(!it) return;
   it.done = !it.done;
+  it.updatedAt = new Date().toISOString();
   if(it.done){
     if(!it.doneDate) it.doneDate = new Date().toISOString().slice(0,10);
     toast(`🎉 축하합니다! 「${it.title}」 완료!`);
@@ -1121,7 +1160,8 @@ function saveItem(ev){
     title: document.getElementById("fTitle").value.trim(),
     done: document.getElementById("fDone").checked,
     doneDate: document.getElementById("fDone").checked ? document.getElementById("fDate").value : "",
-    note: document.getElementById("fNote").value.trim()
+    note: document.getElementById("fNote").value.trim(),
+    updatedAt: new Date().toISOString()
   };
   if(!data.title) return;
   if(editingId===null){
@@ -1148,6 +1188,7 @@ function askDelete(id){
 function doDelete(){
   const it = items.find(i=>i.id===deletingId);
   items = items.filter(i=>i.id!==deletingId);
+  tombs[deletingId] = new Date().toISOString();
   persist(); closeModal("delOverlay"); render();
   toast(`🗑️ 「${it ? it.title : ""}」 삭제됨`);
 }
@@ -1155,7 +1196,10 @@ function doDelete(){
 /* ============ 초기화 / 백업 ============ */
 function confirmReset(){ showModal("resetOverlay"); }
 function doReset(){
-  items = SEED_DATA.map(x=>({...x}));
+  const now = new Date().toISOString();
+  const seedIds = new Set(SEED_DATA.map(x=>x.id));
+  for(const it of items) if(!seedIds.has(it.id)) tombs[it.id] = now;  // 추가분 삭제 기록
+  items = SEED_DATA.map(x=>({...x, updatedAt: now}));
   persist(); closeModal("resetOverlay"); render();
   toast("↺ 초기 300개 목록으로 되돌렸습니다.");
 }
@@ -1177,10 +1221,12 @@ function importData(ev){
       const data = JSON.parse(reader.result);
       if(!Array.isArray(data) || !data.every(x=>x && typeof x.title==="string" && typeof x.category==="string"))
         throw new Error("형식 오류");
+      const now = new Date().toISOString();
       items = data.map((x,idx)=>({
         id: Number.isInteger(x.id) ? x.id : idx+1,
         category: x.category, title: x.title,
-        done: !!x.done, doneDate: x.doneDate || "", note: x.note || ""
+        done: !!x.done, doneDate: x.doneDate || "", note: x.note || "",
+        updatedAt: x.updatedAt || now
       }));
       persist(); render();
       toast(`⬆ ${items.length}개 항목을 가져왔습니다.`);

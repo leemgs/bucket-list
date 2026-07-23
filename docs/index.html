@@ -273,6 +273,16 @@ input,select,textarea{font-family:inherit;font-size:15px}
   border-radius:10px;padding:10px 12px;margin-bottom:14px;word-break:keep-all;line-height:1.55;
 }
 .gh-help a{color:var(--accent);font-weight:700}
+.btn-test{background:#eef3f8;color:#2c5677;font-weight:700}
+.btn-test:hover{background:#dde9f3}
+.btn-test:disabled{opacity:.6;cursor:wait}
+.gh-test{
+  border-radius:10px;padding:10px 13px;font-size:13px;font-weight:500;
+  margin:2px 0 12px;word-break:keep-all;line-height:1.5;
+}
+.gh-test.ok{background:#e5f0ea;color:#2c5e45}
+.gh-test.warn{background:#fbf3e2;color:#7a5d1d}
+.gh-test.err{background:#f7e4e1;color:#8f3a30}
 
 /* ---------- Toast ---------- */
 .toast{
@@ -467,13 +477,15 @@ footer b{color:var(--accent)}
           <input type="text" id="ghBranch">
         </div>
       </div>
+      <div id="ghTestResult" class="gh-test" style="display:none"></div>
       <div class="modal-actions">
-        <button type="button" class="btn btn-cancel" onclick="disconnectGh()">연동 해제</button>
-        <button type="button" class="btn btn-cancel" onclick="syncNow()">☁ 지금 저장</button>
+        <button type="button" class="btn btn-test" id="ghTestBtn" onclick="testGhConnection()">🔌 연결 테스트</button>
         <button type="submit" class="btn btn-save">저장·연결</button>
       </div>
       <div class="modal-actions" style="margin-top:9px">
-        <button type="button" class="btn btn-cancel" onclick="pullFromGh(true)">⬇ GitHub에서 불러오기</button>
+        <button type="button" class="btn btn-cancel" onclick="disconnectGh()">연동 해제</button>
+        <button type="button" class="btn btn-cancel" onclick="syncNow()">☁ 지금 저장</button>
+        <button type="button" class="btn btn-cancel" onclick="pullFromGh(true)">⬇ 불러오기</button>
         <button type="button" class="btn btn-cancel" onclick="closeModal('ghOverlay')">닫기</button>
       </div>
     </form>
@@ -676,8 +688,76 @@ async function initRemote(){
   }
 }
 
+/* --- 연결 테스트: 입력 중인 토큰으로 접근·쓰기 권한 확인 --- */
+function ghTestMsg(cls, html){
+  const el = document.getElementById("ghTestResult");
+  el.className = "gh-test " + cls;
+  el.innerHTML = html;
+  el.style.display = "";
+}
+async function testGhConnection(){
+  const token  = document.getElementById("ghToken").value.trim();
+  const owner  = document.getElementById("ghOwner").value.trim() || detectRepo().owner;
+  const repo   = document.getElementById("ghRepo").value.trim()  || detectRepo().repo;
+  const branch = document.getElementById("ghBranch").value.trim() || "main";
+  if(!token){ ghTestMsg("err","❌ 토큰을 먼저 입력하세요."); return; }
+
+  const btn = document.getElementById("ghTestBtn");
+  btn.disabled = true; btn.textContent = "⏳ 확인 중…";
+  const headers = {
+    "Authorization":"Bearer "+token,
+    "Accept":"application/vnd.github+json",
+    "X-GitHub-Api-Version":"2022-11-28"
+  };
+  try{
+    // 1) 토큰 유효성 + 저장소 접근 확인
+    const repoRes = await fetch(`https://api.github.com/repos/${owner}/${repo}`, {headers});
+    if(repoRes.status === 401){
+      ghTestMsg("err","❌ <b>토큰이 유효하지 않습니다.</b> 만료되었거나 잘못 입력되었습니다."); return;
+    }
+    if(repoRes.status === 403){
+      ghTestMsg("err","❌ <b>접근이 거부되었습니다(403).</b> 토큰의 Repository access에 이 저장소가 포함되어 있는지 확인하세요."); return;
+    }
+    if(repoRes.status === 404){
+      ghTestMsg("err",`❌ <b>${esc(owner)}/${esc(repo)}</b> 저장소를 찾을 수 없습니다.<br>저장소 이름을 확인하거나, 토큰의 Repository access에 이 저장소를 추가하세요.`); return;
+    }
+    if(!repoRes.ok){ ghTestMsg("err","❌ 저장소 확인 실패 (HTTP "+repoRes.status+")"); return; }
+    const repoJson = await repoRes.json();
+    const canWrite = !!(repoJson.permissions && repoJson.permissions.push);
+
+    // 2) 브랜치 확인
+    const brRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/branches/${encodeURIComponent(branch)}`, {headers});
+    const branchOk = brRes.ok;
+
+    // 3) data.json 읽기 확인 (Contents 권한)
+    const fileRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${GH_PATH}?ref=${encodeURIComponent(branch)}`, {headers});
+    const contentsReadable = fileRes.ok || fileRes.status === 404; // 404 = 파일만 없음(권한은 OK)
+    const fileExists = fileRes.ok;
+
+    if(!contentsReadable && fileRes.status === 403){
+      ghTestMsg("err","❌ 저장소는 접근되지만 <b>Contents 권한이 없습니다.</b> 토큰 Permissions에서 <b>Contents: Read and write</b>를 허용하세요."); return;
+    }
+    if(!branchOk){
+      ghTestMsg("warn",`⚠️ 토큰과 저장소는 정상이지만 <b>「${esc(branch)}」 브랜치가 없습니다.</b> 브랜치 이름을 확인하세요.`); return;
+    }
+    if(!canWrite){
+      ghTestMsg("warn","⚠️ <b>읽기는 가능하지만 쓰기 권한이 확인되지 않습니다.</b> 자동 커밋에는 토큰 Permissions의 <b>Contents: Read and write</b>가 필요합니다."); return;
+    }
+    ghTestMsg("ok",
+      `✅ <b>연결 성공!</b> ${esc(owner)}/${esc(repo)} @ ${esc(branch)}<br>` +
+      `· 토큰 유효 ✓ &nbsp;· 저장소 접근 ✓ &nbsp;· 쓰기 권한 ✓ &nbsp;· data.json ${fileExists ? "존재 ✓" : "없음(첫 저장 시 자동 생성)"}<br>` +
+      `아래 <b>저장·연결</b>을 누르면 자동 커밋이 시작됩니다.`);
+  }catch(e){
+    ghTestMsg("err","❌ 네트워크 오류: "+esc(e.message));
+  }finally{
+    btn.disabled = false; btn.textContent = "🔌 연결 테스트";
+  }
+}
+
 /* --- 설정 모달 --- */
 function openGhSettings(){
+  const t = document.getElementById("ghTestResult");
+  t.style.display = "none"; t.innerHTML = "";
   document.getElementById("ghToken").value  = gh.token  || "";
   document.getElementById("ghOwner").value  = gh.owner  || "";
   document.getElementById("ghRepo").value   = gh.repo   || "";

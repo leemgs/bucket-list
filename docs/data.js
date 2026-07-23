@@ -1,0 +1,2403 @@
+// 초기 버킷리스트 데이터 (원본: my_life_bucket_list_300.html)
+const SEED_DATA = [
+ {
+  "id": 1,
+  "category": "가족과 사랑",
+  "title": "배우자와 둘만의 1박 2일 무계획 여행 떠나기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 2,
+  "category": "가족과 사랑",
+  "title": "가족 모두가 모인 정식 가족사진 촬영하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 3,
+  "category": "가족과 사랑",
+  "title": "자녀에게 손편지 한 통씩 써서 전하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 4,
+  "category": "가족과 사랑",
+  "title": "손녀와 하루 종일 놀며 사진 앨범 만들기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 5,
+  "category": "가족과 사랑",
+  "title": "가족의 옛 사진 100장을 골라 디지털 복원하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 6,
+  "category": "가족과 사랑",
+  "title": "부모님과 조부모님의 삶을 가족 역사로 기록하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 7,
+  "category": "가족과 사랑",
+  "title": "가족 각자의 인생 이야기를 영상 인터뷰로 남기기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 8,
+  "category": "가족과 사랑",
+  "title": "배우자와 처음 만난 장소를 다시 찾아가기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 9,
+  "category": "가족과 사랑",
+  "title": "결혼기념일에 서로의 고마운 점 30가지 말하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 10,
+  "category": "가족과 사랑",
+  "title": "가족과 함께 김장하여 이웃과 나누기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 11,
+  "category": "가족과 사랑",
+  "title": "온 가족이 휴대전화 없이 하루 보내기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 12,
+  "category": "가족과 사랑",
+  "title": "자녀가 사는 도시에서 일주일 함께 생활해 보기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 13,
+  "category": "가족과 사랑",
+  "title": "가족에게 내가 만든 요리로 코스 식사 대접하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 14,
+  "category": "가족과 사랑",
+  "title": "가족 공동 버킷리스트 30개 만들기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 15,
+  "category": "가족과 사랑",
+  "title": "손녀에게 들려줄 할아버지의 동화 한 편 쓰기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 16,
+  "category": "가족과 사랑",
+  "title": "가족 이름으로 작은 장학금 또는 기부 시작하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 17,
+  "category": "가족과 사랑",
+  "title": "가족과 매년 같은 장소에서 사진 한 장 남기기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 18,
+  "category": "가족과 사랑",
+  "title": "가족 모두에게 비상 연락·자산·의료 정보를 정리해 공유하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 19,
+  "category": "가족과 사랑",
+  "title": "배우자와 은퇴 후 살고 싶은 하루를 미리 체험하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 20,
+  "category": "가족과 사랑",
+  "title": "가족에게 사랑한다는 말을 미루지 않고 직접 전하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 21,
+  "category": "농촌과 자연",
+  "title": "옥수수를 직접 재배해 수확한 뒤 야외에서 쪄 먹기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 22,
+  "category": "농촌과 자연",
+  "title": "직접 기른 배추와 무로 김장하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 23,
+  "category": "농촌과 자연",
+  "title": "블루베리를 수확해 가족 잼 만들기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 24,
+  "category": "농촌과 자연",
+  "title": "매실을 따서 매실청 담그기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 25,
+  "category": "농촌과 자연",
+  "title": "보리수를 수확해 효소나 잼 만들기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 26,
+  "category": "농촌과 자연",
+  "title": "대봉감을 수확해 곶감 만들기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 27,
+  "category": "농촌과 자연",
+  "title": "밤을 주워 장작불에 구워 먹기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 28,
+  "category": "농촌과 자연",
+  "title": "복숭아나무 한 그루를 심고 첫 열매 기다리기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 29,
+  "category": "농촌과 자연",
+  "title": "텃밭에서 수박 한 통을 성공적으로 키우기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 30,
+  "category": "농촌과 자연",
+  "title": "농촌 쉼터에서 빗소리 들으며 하룻밤 보내기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 31,
+  "category": "농촌과 자연",
+  "title": "마당에 작은 야외 화덕 만들기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 32,
+  "category": "농촌과 자연",
+  "title": "직접 만든 화덕에서 고구마와 감자 구워 먹기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 33,
+  "category": "농촌과 자연",
+  "title": "새벽 안개 낀 밭을 천천히 산책하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 34,
+  "category": "농촌과 자연",
+  "title": "텃밭의 사계절을 같은 위치에서 사진으로 남기기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 35,
+  "category": "농촌과 자연",
+  "title": "새집을 달아 계절별로 찾아오는 새 관찰하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 36,
+  "category": "농촌과 자연",
+  "title": "농약을 최소화한 친환경 텃밭 한 구역 운영하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 37,
+  "category": "농촌과 자연",
+  "title": "직접 수확한 농산물로 이웃에게 작은 꾸러미 선물하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 38,
+  "category": "농촌과 자연",
+  "title": "장독대를 안전하고 아름답게 정비하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 39,
+  "category": "농촌과 자연",
+  "title": "쉼터 주변에 그늘나무와 꽃길 만들기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 40,
+  "category": "농촌과 자연",
+  "title": "농촌에서 아무 일도 하지 않는 온전한 하루 보내기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 41,
+  "category": "여행과 세계",
+  "title": "배우자와 제주 올레길 한 코스를 완주하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 42,
+  "category": "여행과 세계",
+  "title": "세멜바이즈가 있는 부다페스트를 가족과 천천히 여행하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 43,
+  "category": "여행과 세계",
+  "title": "오타와를 다시 찾아 Linux 발표 시절을 회상하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 44,
+  "category": "여행과 세계",
+  "title": "호주 태즈메이니아를 다시 방문해 2009년의 나와 만나기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 45,
+  "category": "여행과 세계",
+  "title": "런던에서 EuroSys 발표의 추억이 있는 장소 찾아가기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 46,
+  "category": "여행과 세계",
+  "title": "마드리드에서 골목과 미술관을 느긋하게 즐기기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 47,
+  "category": "여행과 세계",
+  "title": "라스베이거스가 아닌 미국의 작은 국립공원 여행하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 48,
+  "category": "여행과 세계",
+  "title": "일본 홋카이도에서 설경 온천 체험하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 49,
+  "category": "여행과 세계",
+  "title": "기차만 타고 국내 일주 여행하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 50,
+  "category": "여행과 세계",
+  "title": "서해안 노을 명소 10곳 찾아보기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 51,
+  "category": "여행과 세계",
+  "title": "동해안 일출을 가족과 함께 보기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 52,
+  "category": "여행과 세계",
+  "title": "울릉도와 독도 여행하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 53,
+  "category": "여행과 세계",
+  "title": "백두산 천지를 직접 보기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 54,
+  "category": "여행과 세계",
+  "title": "몽골 초원에서 밤하늘 은하수 보기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 55,
+  "category": "여행과 세계",
+  "title": "아이슬란드에서 오로라 보기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 56,
+  "category": "여행과 세계",
+  "title": "스위스 산악열차 타기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 57,
+  "category": "여행과 세계",
+  "title": "뉴질랜드에서 캠핑카 여행하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 58,
+  "category": "여행과 세계",
+  "title": "아무 예약 없이 가까운 도시로 당일치기 떠나기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 59,
+  "category": "여행과 세계",
+  "title": "해외 학회 뒤 하루는 반드시 개인 여행에 쓰기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 60,
+  "category": "여행과 세계",
+  "title": "여행지마다 엽서 한 장을 미래의 나에게 보내기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 61,
+  "category": "건강과 몸",
+  "title": "매년 종합건강검진 결과를 한 장으로 정리하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 62,
+  "category": "건강과 몸",
+  "title": "주 3회 30분 걷기를 1년간 지속하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 63,
+  "category": "건강과 몸",
+  "title": "5km 달리기 대회 완주하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 64,
+  "category": "건강과 몸",
+  "title": "10km 걷기 행사에 가족과 참가하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 65,
+  "category": "건강과 몸",
+  "title": "허리와 무릎을 위한 근력운동 습관 만들기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 66,
+  "category": "건강과 몸",
+  "title": "체중보다 체력 향상을 목표로 100일 운동하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 67,
+  "category": "건강과 몸",
+  "title": "수영 자유형 1km 쉬지 않고 완주하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 68,
+  "category": "건강과 몸",
+  "title": "자전거로 수원에서 화성 쉼터까지 안전하게 다녀오기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 69,
+  "category": "건강과 몸",
+  "title": "한 달간 매일 7시간 이상 숙면하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 70,
+  "category": "건강과 몸",
+  "title": "야식을 끊고 건강한 저녁 루틴 만들기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 71,
+  "category": "건강과 몸",
+  "title": "정기적으로 치과·안과·청력 검진받기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 72,
+  "category": "건강과 몸",
+  "title": "혈압·혈당·콜레스테롤 추이를 꾸준히 기록하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 73,
+  "category": "건강과 몸",
+  "title": "하루 10분 스트레칭을 100일 이어가기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 74,
+  "category": "건강과 몸",
+  "title": "스마트폰 없이 숲길을 3시간 걷기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 75,
+  "category": "건강과 몸",
+  "title": "금연·절주가 필요한 가족이나 친구를 함께 응원하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 76,
+  "category": "건강과 몸",
+  "title": "건강한 집밥 레시피 20개 익히기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 77,
+  "category": "건강과 몸",
+  "title": "응급처치와 심폐소생술 교육 다시 받기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 78,
+  "category": "건강과 몸",
+  "title": "몸이 아플 때 참고 버티지 않고 제때 진료받기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 79,
+  "category": "건강과 몸",
+  "title": "한 해에 한 번 완전한 휴식 주간 갖기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 80,
+  "category": "건강과 몸",
+  "title": "80세에도 할 수 있는 평생 운동 하나 정하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 81,
+  "category": "연구와 창작",
+  "title": "평생 연구를 대표하는 논문 한 편 완성하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 82,
+  "category": "연구와 창작",
+  "title": "내 연구 철학을 담은 에세이 쓰기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 83,
+  "category": "연구와 창작",
+  "title": "Linux·Android·Tizen 경험을 후배를 위한 책으로 정리하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 84,
+  "category": "연구와 창작",
+  "title": "라즈베리파이 IoT 책의 개정판 또는 후속 책 집필하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 85,
+  "category": "연구와 창작",
+  "title": "MBALL 프로젝트를 누구나 재현 가능한 오픈소스로 완성하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 86,
+  "category": "연구와 창작",
+  "title": "FALCON 프로젝트의 공개 데모 만들기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 87,
+  "category": "연구와 창작",
+  "title": "Situation Engineering 연구를 대표 논문으로 발전시키기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 88,
+  "category": "연구와 창작",
+  "title": "AI 신뢰성과 환각 감소에 관한 강연 한 편 만들기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 89,
+  "category": "연구와 창작",
+  "title": "퇴직 전후의 기술 경험을 20회 영상 강의로 남기기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 90,
+  "category": "연구와 창작",
+  "title": "오래된 발표 자료와 소스 코드를 디지털 아카이브로 정리하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 91,
+  "category": "연구와 창작",
+  "title": "내 특허와 논문이 실제 제품에 미친 영향을 기록하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 92,
+  "category": "연구와 창작",
+  "title": "젊은 연구자 한 명의 논문을 끝까지 멘토링하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 93,
+  "category": "연구와 창작",
+  "title": "국제학회에서 다시 한 번 직접 키노트 또는 초청강연 하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 94,
+  "category": "연구와 창작",
+  "title": "연구 실패 사례 10가지를 솔직하게 글로 남기기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 95,
+  "category": "연구와 창작",
+  "title": "매년 작은 오픈소스 프로젝트 하나 공개하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 96,
+  "category": "연구와 창작",
+  "title": "내 이름의 연구 데이터셋 또는 벤치마크 만들기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 97,
+  "category": "연구와 창작",
+  "title": "AI와 시스템 SW를 잇는 실용 기술 커뮤니티 만들기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 98,
+  "category": "연구와 창작",
+  "title": "논문 인용 수보다 사람에게 준 도움을 기록하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 99,
+  "category": "연구와 창작",
+  "title": "한 달 동안 연구 대신 순수한 창작 프로젝트 해보기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 100,
+  "category": "연구와 창작",
+  "title": "마지막 직장 프로젝트를 자랑스럽게 마무리하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 101,
+  "category": "나눔과 사회",
+  "title": "저소득층 학생에게 노트북 한 대 기부하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 102,
+  "category": "나눔과 사회",
+  "title": "후배 개발자 10명에게 무료 진로 상담하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 103,
+  "category": "나눔과 사회",
+  "title": "지역 청소년에게 오픈소스 특강하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 104,
+  "category": "나눔과 사회",
+  "title": "농촌 어르신의 스마트폰 사용을 도와드리기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 105,
+  "category": "나눔과 사회",
+  "title": "내 전문 분야의 무료 온라인 강좌 공개하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 106,
+  "category": "나눔과 사회",
+  "title": "한 해에 최소 한 번 헌혈하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 107,
+  "category": "나눔과 사회",
+  "title": "재난 구호 또는 아동 지원에 정기기부 시작하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 108,
+  "category": "나눔과 사회",
+  "title": "사용하지 않는 전자기기를 정리해 필요한 곳에 기부하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 109,
+  "category": "나눔과 사회",
+  "title": "지역 도서관에 기술 서적 기증하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 110,
+  "category": "나눔과 사회",
+  "title": "농산물을 복지시설에 나누기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 111,
+  "category": "나눔과 사회",
+  "title": "오픈소스 초보자의 첫 패치를 도와주기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 112,
+  "category": "나눔과 사회",
+  "title": "퇴직 후 비영리 기술 자문 활동하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 113,
+  "category": "나눔과 사회",
+  "title": "장애인 접근성을 고려한 소프트웨어 프로젝트 참여하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 114,
+  "category": "나눔과 사회",
+  "title": "후배 연구자의 추천서를 정성껏 써주기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 115,
+  "category": "나눔과 사회",
+  "title": "나에게 도움 준 사람 20명에게 감사 인사 전하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 116,
+  "category": "나눔과 사회",
+  "title": "지역 환경정화 활동에 가족과 참여하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 117,
+  "category": "나눔과 사회",
+  "title": "개발자 경험을 사회 문제 해결에 한 번 사용하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 118,
+  "category": "나눔과 사회",
+  "title": "젊은 세대가 실패해도 다시 도전하도록 격려하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 119,
+  "category": "나눔과 사회",
+  "title": "내가 받은 상금 일부를 의미 있는 곳에 기부하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 120,
+  "category": "나눔과 사회",
+  "title": "평생 받은 도움을 목록으로 적고 하나씩 되돌려주기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 121,
+  "category": "배움과 도전",
+  "title": "악기 한 곡을 처음부터 끝까지 연주하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 122,
+  "category": "배움과 도전",
+  "title": "수채화로 농촌 쉼터의 사계절 그리기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 123,
+  "category": "배움과 도전",
+  "title": "사진 촬영의 기초를 배워 가족사진 직접 찍기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 124,
+  "category": "배움과 도전",
+  "title": "영어로 30분 자유롭게 강연하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 125,
+  "category": "배움과 도전",
+  "title": "새로운 프로그래밍 언어 하나로 작은 서비스를 만들기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 126,
+  "category": "배움과 도전",
+  "title": "목공을 배워 가족에게 의자나 책상 만들어 주기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 127,
+  "category": "배움과 도전",
+  "title": "드론 조종 자격 또는 안전교육 이수하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 128,
+  "category": "배움과 도전",
+  "title": "텃밭 작물 재배일지를 데이터로 분석하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 129,
+  "category": "배움과 도전",
+  "title": "천체망원경으로 토성과 목성 관찰하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 130,
+  "category": "배움과 도전",
+  "title": "한국사 유적지 30곳 방문하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 131,
+  "category": "배움과 도전",
+  "title": "고전문학 20권 읽기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 132,
+  "category": "배움과 도전",
+  "title": "철학책 10권을 읽고 내 삶의 원칙 정리하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 133,
+  "category": "배움과 도전",
+  "title": "요리 수업을 들어 대표 메뉴 하나 만들기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 134,
+  "category": "배움과 도전",
+  "title": "캘리그래피로 가족 이름과 가훈 쓰기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 135,
+  "category": "배움과 도전",
+  "title": "스쿠버다이빙 또는 스노클링에 도전하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 136,
+  "category": "배움과 도전",
+  "title": "도예 체험으로 가족 식기 만들기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 137,
+  "category": "배움과 도전",
+  "title": "일주일간 매일 새로운 사람과 대화하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 138,
+  "category": "배움과 도전",
+  "title": "AI 없이 종이와 펜으로 짧은 글 30편 쓰기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 139,
+  "category": "배움과 도전",
+  "title": "전혀 모르는 분야의 공개강좌 하나 끝까지 수료하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 140,
+  "category": "배움과 도전",
+  "title": "나이는 핑계가 아니라는 것을 보여줄 새 도전 하나 하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 141,
+  "category": "기록과 추억",
+  "title": "내 인생 연표를 출생부터 현재까지 정리하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 142,
+  "category": "기록과 추억",
+  "title": "매년 최고의 사진 12장을 골라 포토북 만들기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 143,
+  "category": "기록과 추억",
+  "title": "어린 시절 살던 동네를 다시 걷고 기록하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 144,
+  "category": "기록과 추억",
+  "title": "군 복무 시절 기억을 글로 남기기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 145,
+  "category": "기록과 추억",
+  "title": "삼성전자 입사 첫날부터 현재까지 주요 순간 정리하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 146,
+  "category": "기록과 추억",
+  "title": "나를 성장시킨 동료 30명의 이름과 배운 점 기록하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 147,
+  "category": "기록과 추억",
+  "title": "발표했던 세계 도시들을 지도에 표시하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 148,
+  "category": "기록과 추억",
+  "title": "내가 만든 제품과 기술의 계보를 한 장으로 그리기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 149,
+  "category": "기록과 추억",
+  "title": "오래된 이메일에서 소중한 편지 100개 보관하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 150,
+  "category": "기록과 추억",
+  "title": "가족 음성 메시지를 모아 추억 파일 만들기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 151,
+  "category": "기록과 추억",
+  "title": "손녀에게 전할 삶의 조언 50가지 적기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 152,
+  "category": "기록과 추억",
+  "title": "가장 힘들었던 시기와 극복 과정을 솔직히 기록하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 153,
+  "category": "기록과 추억",
+  "title": "인생 최고의 실수 10개와 배운 점 정리하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 154,
+  "category": "기록과 추억",
+  "title": "매년 생일에 미래의 나에게 편지 쓰기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 155,
+  "category": "기록과 추억",
+  "title": "내 묘비명 대신 살아 있을 때 남길 한 문장 정하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 156,
+  "category": "기록과 추억",
+  "title": "사진 속 사람들에게 직접 연락해 안부 묻기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 157,
+  "category": "기록과 추억",
+  "title": "오래된 블로그 글을 선별해 전자책으로 묶기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 158,
+  "category": "기록과 추억",
+  "title": "나의 연구 발표 영상을 한곳에 정리하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 159,
+  "category": "기록과 추억",
+  "title": "가족 레시피와 음식 추억을 기록하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 160,
+  "category": "기록과 추억",
+  "title": "평범하지만 행복했던 하루 100개를 짧게 적기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 161,
+  "category": "휴식과 일상 행복",
+  "title": "비 오는 날 창가에서 커피 마시며 책 한 권 읽기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 162,
+  "category": "휴식과 일상 행복",
+  "title": "평일에 연차를 내고 배우자와 영화 보기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 163,
+  "category": "휴식과 일상 행복",
+  "title": "아침 해 뜨는 모습을 보며 따뜻한 차 마시기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 164,
+  "category": "휴식과 일상 행복",
+  "title": "휴대전화 알림을 모두 끄고 하루 보내기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 165,
+  "category": "휴식과 일상 행복",
+  "title": "좋아하는 음악 100곡으로 인생 플레이리스트 만들기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 166,
+  "category": "휴식과 일상 행복",
+  "title": "집 근처 맛집을 가족과 한 달에 한 곳씩 찾기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 167,
+  "category": "휴식과 일상 행복",
+  "title": "시장에 가서 제철 재료로 즉석 요리하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 168,
+  "category": "휴식과 일상 행복",
+  "title": "한여름 밤 마당에서 선풍기 바람 맞으며 수박 먹기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 169,
+  "category": "휴식과 일상 행복",
+  "title": "겨울밤 장작불 옆에서 군고구마 먹기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 170,
+  "category": "휴식과 일상 행복",
+  "title": "가족과 보드게임 밤 열기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 171,
+  "category": "휴식과 일상 행복",
+  "title": "혼자 조용한 카페에서 아무 목적 없이 글쓰기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 172,
+  "category": "휴식과 일상 행복",
+  "title": "일몰을 보며 하루의 고마운 일 세 가지 말하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 173,
+  "category": "휴식과 일상 행복",
+  "title": "오래된 친구와 밤늦게까지 추억 이야기하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 174,
+  "category": "휴식과 일상 행복",
+  "title": "꽃이 피는 계절마다 작은 꽃다발 선물하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 175,
+  "category": "휴식과 일상 행복",
+  "title": "매달 하루는 돈을 거의 쓰지 않고 즐겁게 보내기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 176,
+  "category": "휴식과 일상 행복",
+  "title": "좋아하는 음식을 직접 천천히 만들어 먹기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 177,
+  "category": "휴식과 일상 행복",
+  "title": "TV와 뉴스 없이 주말 보내기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 178,
+  "category": "휴식과 일상 행복",
+  "title": "집 안 한 공간을 나만의 편안한 서재로 꾸미기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 179,
+  "category": "휴식과 일상 행복",
+  "title": "일 년 동안 매주 한 번 작은 행복 사진 찍기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 180,
+  "category": "휴식과 일상 행복",
+  "title": "해야 할 일 없이 마음 가는 대로 하루 보내기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 181,
+  "category": "은퇴와 인생 완성",
+  "title": "은퇴 후의 주간 생활표를 미리 설계해 보기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 182,
+  "category": "은퇴와 인생 완성",
+  "title": "재정·건강·주거·관계가 포함된 은퇴 계획 완성하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 183,
+  "category": "은퇴와 인생 완성",
+  "title": "5도 2촌 생활을 한 달 동안 실제로 시험해 보기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 184,
+  "category": "은퇴와 인생 완성",
+  "title": "배우자와 노후에 원하는 것과 원하지 않는 것 대화하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 185,
+  "category": "은퇴와 인생 완성",
+  "title": "유언장과 사전의료의향서를 차분히 준비하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 186,
+  "category": "은퇴와 인생 완성",
+  "title": "중요 계정과 디지털 자산의 인계 문서 만들기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 187,
+  "category": "은퇴와 인생 완성",
+  "title": "불필요한 물건 절반을 정리해 가벼운 삶 시작하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 188,
+  "category": "은퇴와 인생 완성",
+  "title": "퇴직 후 첫 100일 계획 세우기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 189,
+  "category": "은퇴와 인생 완성",
+  "title": "직함 없이도 나를 설명할 수 있는 정체성 찾기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 190,
+  "category": "은퇴와 인생 완성",
+  "title": "매년 한 달은 일과 연구에서 완전히 떨어져 지내기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 191,
+  "category": "은퇴와 인생 완성",
+  "title": "작은 텃밭과 서재가 있는 노후 공간 완성하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 192,
+  "category": "은퇴와 인생 완성",
+  "title": "연금과 투자 수익보다 필요한 생활비를 명확히 알기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 193,
+  "category": "은퇴와 인생 완성",
+  "title": "은퇴 후 함께할 친구 모임 만들기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 194,
+  "category": "은퇴와 인생 완성",
+  "title": "배우자와 국내 한 달 살기 해보기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 195,
+  "category": "은퇴와 인생 완성",
+  "title": "은퇴 후에도 사회와 연결될 봉사 역할 찾기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 196,
+  "category": "은퇴와 인생 완성",
+  "title": "가족에게 부담이 되지 않는 돌봄 계획 세우기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 197,
+  "category": "은퇴와 인생 완성",
+  "title": "내 장례식보다 살아 있는 동안의 감사 모임 열기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 198,
+  "category": "은퇴와 인생 완성",
+  "title": "죽기 전에 꼭 만나고 싶은 사람 목록 작성하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 199,
+  "category": "은퇴와 인생 완성",
+  "title": "마지막까지 배우고 사랑하며 살겠다는 삶의 원칙 쓰기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 200,
+  "category": "은퇴와 인생 완성",
+  "title": "버킷리스트를 매년 점검하며 완료한 항목에 날짜와 소감 남기기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 201,
+  "category": "사람과 관계",
+  "title": "학창 시절 은사님을 찾아뵙고 감사 인사 전하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 202,
+  "category": "사람과 관계",
+  "title": "20년 넘게 연락하지 못한 친구 한 명에게 먼저 전화하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 203,
+  "category": "사람과 관계",
+  "title": "배우자와 매달 한 번 서로의 요즘 마음을 묻는 대화 시간 갖기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 204,
+  "category": "사람과 관계",
+  "title": "형제자매와 어린 시절 추억 여행 떠나기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 205,
+  "category": "사람과 관계",
+  "title": "자녀 각각과 단둘이 하루 여행하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 206,
+  "category": "사람과 관계",
+  "title": "손녀와 함께 나무 한 그루 심고 이름 붙이기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 207,
+  "category": "사람과 관계",
+  "title": "가족 모두의 생일과 기념일을 손글씨 달력으로 만들기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 208,
+  "category": "사람과 관계",
+  "title": "가족에게 내가 미안했던 일을 솔직히 사과하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 209,
+  "category": "사람과 관계",
+  "title": "가족 한 사람의 꿈을 하루 동안 온전히 도와주기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 210,
+  "category": "사람과 관계",
+  "title": "친한 부부와 함께 소박한 시골 식사 모임 열기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 211,
+  "category": "사람과 관계",
+  "title": "옛 직장 동료들과 작은 홈커밍 모임 만들기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 212,
+  "category": "사람과 관계",
+  "title": "나를 처음 개발자로 이끌어 준 사람에게 감사 편지 쓰기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 213,
+  "category": "사람과 관계",
+  "title": "후배 한 명의 장기적인 커리어 멘토가 되어 주기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 214,
+  "category": "사람과 관계",
+  "title": "이웃집에 직접 만든 음식을 들고 먼저 인사하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 215,
+  "category": "사람과 관계",
+  "title": "한 달에 한 번 가족 단체 식사 전통 만들기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 216,
+  "category": "사람과 관계",
+  "title": "가족과 서로의 버킷리스트 하나씩 함께 이루기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 217,
+  "category": "사람과 관계",
+  "title": "배우자의 어린 시절 동네를 함께 걸어보기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 218,
+  "category": "사람과 관계",
+  "title": "가족에게 물려주고 싶은 가치 다섯 가지를 함께 이야기하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 219,
+  "category": "사람과 관계",
+  "title": "오래된 갈등 하나를 먼저 손 내밀어 풀기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 220,
+  "category": "사람과 관계",
+  "title": "소중한 사람 열 명과 둘만의 사진을 한 장씩 남기기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 221,
+  "category": "소소한 모험",
+  "title": "새벽 첫차를 타고 목적지 없이 종점까지 가보기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 222,
+  "category": "소소한 모험",
+  "title": "한강이나 서해에서 일몰 카약 체험하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 223,
+  "category": "소소한 모험",
+  "title": "섬마을 민박에서 이틀 지내보기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 224,
+  "category": "소소한 모험",
+  "title": "밤기차를 타고 남쪽 도시로 여행하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 225,
+  "category": "소소한 모험",
+  "title": "봄꽃이 가장 아름다운 날 자전거 소풍 떠나기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 226,
+  "category": "소소한 모험",
+  "title": "시장 버스만 이용해 낯선 지역 하루 여행하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 227,
+  "category": "소소한 모험",
+  "title": "산 정상에서 직접 끓인 라면 먹기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 228,
+  "category": "소소한 모험",
+  "title": "비 오는 날 우산을 들고 오래된 골목 산책하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 229,
+  "category": "소소한 모험",
+  "title": "바닷가에서 텐트를 치고 파도 소리 들으며 자기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 230,
+  "category": "소소한 모험",
+  "title": "경비행기나 열기구를 타고 하늘에서 풍경 보기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 231,
+  "category": "소소한 모험",
+  "title": "국내 최남단과 최동단을 각각 방문하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 232,
+  "category": "소소한 모험",
+  "title": "무인도 체험 프로그램에 참가하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 233,
+  "category": "소소한 모험",
+  "title": "하루 동안 현금과 휴대전화 없이 가까운 곳 여행하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 234,
+  "category": "소소한 모험",
+  "title": "지역 축제에서 주민들과 함께 춤추거나 노래하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 235,
+  "category": "소소한 모험",
+  "title": "눈이 많이 오는 산촌에서 일주일 살아보기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 236,
+  "category": "소소한 모험",
+  "title": "템플스테이에서 새벽 예불과 명상 체험하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 237,
+  "category": "소소한 모험",
+  "title": "강원도 숲속 오두막에서 사흘 머물기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 238,
+  "category": "소소한 모험",
+  "title": "한라산 또는 지리산 정상에 올라보기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 239,
+  "category": "소소한 모험",
+  "title": "국토종주 자전거길 한 구간 완주하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 240,
+  "category": "소소한 모험",
+  "title": "배우자와 각자 추천한 장소를 하루씩 바꿔 여행하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 241,
+  "category": "집과 농촌 프로젝트",
+  "title": "텃밭에 작은 자동관수 시스템 직접 만들기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 242,
+  "category": "집과 농촌 프로젝트",
+  "title": "농촌 쉼터에 태양광 조명 설치하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 243,
+  "category": "집과 농촌 프로젝트",
+  "title": "마당 한쪽에 허브 정원 만들기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 244,
+  "category": "집과 농촌 프로젝트",
+  "title": "토마토를 길러 직접 소스와 파스타 만들기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 245,
+  "category": "집과 농촌 프로젝트",
+  "title": "콩을 재배해 메주나 두부 만들기 체험하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 246,
+  "category": "집과 농촌 프로젝트",
+  "title": "고추를 수확해 가족용 고춧가루 만들기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 247,
+  "category": "집과 농촌 프로젝트",
+  "title": "감자를 캐서 야외 솥에 감자밥 짓기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 248,
+  "category": "집과 농촌 프로젝트",
+  "title": "직접 키운 호박으로 호박죽 끓여 이웃과 나누기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 249,
+  "category": "집과 농촌 프로젝트",
+  "title": "쉼터에 빗물 저장통을 설치해 텃밭에 활용하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 250,
+  "category": "집과 농촌 프로젝트",
+  "title": "곤충과 새가 찾아오는 작은 생태 연못 만들기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 251,
+  "category": "집과 농촌 프로젝트",
+  "title": "사계절 꽃이 이어지는 식재 계획 완성하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 252,
+  "category": "집과 농촌 프로젝트",
+  "title": "직접 목재를 다듬어 야외 벤치 만들기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 253,
+  "category": "집과 농촌 프로젝트",
+  "title": "쉼터의 여름과 겨울 에너지 사용량 줄이기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 254,
+  "category": "집과 농촌 프로젝트",
+  "title": "농촌에서 가족 영화 상영회 열기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 255,
+  "category": "집과 농촌 프로젝트",
+  "title": "마당에서 별자리 관측회를 열어 손녀에게 별 이야기 들려주기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 256,
+  "category": "집과 농촌 프로젝트",
+  "title": "수확한 과일로 가족 이름의 작은 잼 세트 만들기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 257,
+  "category": "집과 농촌 프로젝트",
+  "title": "농사 실패와 성공을 기록한 1년 농촌일지 완성하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 258,
+  "category": "집과 농촌 프로젝트",
+  "title": "지역 농부에게 전통 재배법 하나 배우기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 259,
+  "category": "집과 농촌 프로젝트",
+  "title": "직접 재배한 꽃으로 배우자에게 꽃다발 만들어 주기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 260,
+  "category": "집과 농촌 프로젝트",
+  "title": "농촌 쉼터를 가족 모두가 편히 머무는 공간으로 완성하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 261,
+  "category": "문화와 창작",
+  "title": "나의 인생을 소재로 짧은 다큐멘터리 만들기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 262,
+  "category": "문화와 창작",
+  "title": "가족 사진으로 10분짜리 추억 영상 제작하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 263,
+  "category": "문화와 창작",
+  "title": "직접 작사한 노래 한 곡 녹음하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 264,
+  "category": "문화와 창작",
+  "title": "내가 좋아하는 시 30편을 골라 필사하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 265,
+  "category": "문화와 창작",
+  "title": "가족을 주인공으로 한 짧은 소설 쓰기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 266,
+  "category": "문화와 창작",
+  "title": "농촌 풍경을 주제로 사진전 열기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 267,
+  "category": "문화와 창작",
+  "title": "오픈소스 개발자의 삶을 담은 팟캐스트 10편 만들기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 268,
+  "category": "문화와 창작",
+  "title": "아이들에게 읽어 줄 과학 동화책 한 권 완성하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 269,
+  "category": "문화와 창작",
+  "title": "내 연구 인생을 한 장의 일러스트로 표현하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 270,
+  "category": "문화와 창작",
+  "title": "직접 찍은 사진으로 탁상 달력 만들어 선물하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 271,
+  "category": "문화와 창작",
+  "title": "좋아하는 영화 100편 목록을 만들고 가족과 함께 보기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 272,
+  "category": "문화와 창작",
+  "title": "전통 국악 공연을 좋은 자리에서 감상하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 273,
+  "category": "문화와 창작",
+  "title": "오페라나 뮤지컬을 배우자와 정식으로 관람하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 274,
+  "category": "문화와 창작",
+  "title": "박물관 한 곳을 정해 하루 종일 천천히 둘러보기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 275,
+  "category": "문화와 창작",
+  "title": "내 손글씨로 짧은 시집 한 권 만들기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 276,
+  "category": "문화와 창작",
+  "title": "오래된 컴퓨터와 기기를 작은 개인 박물관처럼 전시하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 277,
+  "category": "문화와 창작",
+  "title": "기술과 삶을 주제로 대중 강연 무대에 서기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 278,
+  "category": "문화와 창작",
+  "title": "내 블로그의 대표 글 50편을 다시 다듬기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 279,
+  "category": "문화와 창작",
+  "title": "손녀와 함께 스톱모션 애니메이션 만들기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 280,
+  "category": "문화와 창작",
+  "title": "나만의 인생 로고와 좌우명 디자인하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 281,
+  "category": "마음과 유산",
+  "title": "매일 감사한 일 한 가지를 365일 기록하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 282,
+  "category": "마음과 유산",
+  "title": "일주일 동안 하루 20분 명상하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 283,
+  "category": "마음과 유산",
+  "title": "나를 힘들게 한 사람을 마음속으로 용서하는 글 쓰기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 284,
+  "category": "마음과 유산",
+  "title": "내가 가진 것 중 가장 소중한 열 가지를 정리하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 285,
+  "category": "마음과 유산",
+  "title": "죽기 전에 후회하지 않기 위한 행동 원칙 열 가지 만들기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 286,
+  "category": "마음과 유산",
+  "title": "인생에서 충분히 잘해온 점 50가지를 적기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 287,
+  "category": "마음과 유산",
+  "title": "가족에게 남길 영상 편지 촬영하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 288,
+  "category": "마음과 유산",
+  "title": "장례식에서 듣고 싶은 음악과 전하고 싶은 말을 정리하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 289,
+  "category": "마음과 유산",
+  "title": "내 이름으로 작은 오픈소스 장학 프로그램 시작하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 290,
+  "category": "마음과 유산",
+  "title": "기술 경력의 핵심 지식을 후배 세대에 공개 문서로 남기기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 291,
+  "category": "마음과 유산",
+  "title": "가족이 쉽게 이해할 수 있는 자산·보험·연금 안내서 만들기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 292,
+  "category": "마음과 유산",
+  "title": "중요한 사진과 문서를 안전하게 이중 백업하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 293,
+  "category": "마음과 유산",
+  "title": "내가 세상을 떠난 뒤에도 유지될 기부 한 가지 설계하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 294,
+  "category": "마음과 유산",
+  "title": "가족에게 남기고 싶은 물건마다 사연을 적어두기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 295,
+  "category": "마음과 유산",
+  "title": "내 삶에 영향을 준 책 20권과 이유를 기록하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 296,
+  "category": "마음과 유산",
+  "title": "내가 받은 사랑과 행운을 한 편의 글로 정리하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 297,
+  "category": "마음과 유산",
+  "title": "70세·80세·90세의 나에게 각각 편지 쓰기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 298,
+  "category": "마음과 유산",
+  "title": "한 해에 한 번 혼자 조용히 삶을 돌아보는 여행 떠나기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 299,
+  "category": "마음과 유산",
+  "title": "직업적 성공과 무관한 나만의 행복 정의 완성하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ },
+ {
+  "id": 300,
+  "category": "마음과 유산",
+  "title": "마지막 순간에 잘 살았다고 말할 수 있는 오늘을 반복하기",
+  "done": false,
+  "doneDate": "",
+  "note": ""
+ }
+];

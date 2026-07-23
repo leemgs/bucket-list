@@ -1,0 +1,729 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>내 인생의 버킷리스트 300</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌟</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Nanum+Myeongjo:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f4ef;
+  --card:#ffffff;
+  --ink:#2b2a27;
+  --ink-soft:#6b675e;
+  --line:#e7e2d8;
+  --accent:#3d7a5d;
+  --accent-soft:#e5f0ea;
+  --gold:#c99b3f;
+  --danger:#c0564b;
+  --radius:16px;
+  --shadow:0 2px 10px rgba(60,50,30,.07);
+  --shadow-lg:0 14px 40px rgba(60,50,30,.16);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Noto Sans KR",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.6;
+  min-height:100vh;
+}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+input,select,textarea{font-family:inherit;font-size:15px}
+
+/* ---------- Hero ---------- */
+.hero{
+  position:relative;
+  background:linear-gradient(135deg,#1e3d2f 0%,#2f5d46 45%,#3d7a5d 100%);
+  color:#fdfbf6;
+  padding:52px 24px 110px;
+  overflow:hidden;
+}
+.hero::before{
+  content:"";position:absolute;inset:0;opacity:.14;
+  background-image:radial-gradient(circle at 15% 20%,#ffe9b0 0 2px,transparent 3px),
+    radial-gradient(circle at 70% 60%,#fff 0 1.5px,transparent 2.5px),
+    radial-gradient(circle at 40% 80%,#ffe9b0 0 1.5px,transparent 2.5px),
+    radial-gradient(circle at 88% 22%,#fff 0 2px,transparent 3px),
+    radial-gradient(circle at 55% 30%,#fff 0 1px,transparent 2px);
+  background-size:340px 340px;
+}
+.hero-inner{position:relative;max-width:1100px;margin:0 auto;text-align:center}
+.hero .eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:13px;letter-spacing:.28em;font-weight:500;color:#d9e7dd;
+  text-transform:uppercase;margin-bottom:14px;
+}
+.hero h1{
+  font-family:"Nanum Myeongjo",serif;font-weight:800;
+  font-size:clamp(30px,5vw,46px);letter-spacing:-.01em;
+}
+.hero h1 em{font-style:normal;color:#ffd88a}
+.hero p.tagline{
+  max-width:640px;margin:16px auto 0;color:#cfe0d4;font-size:15px;font-weight:300;
+}
+.hero-actions{margin-top:22px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:10px 18px;border-radius:999px;font-size:14px;font-weight:500;
+  transition:transform .15s,box-shadow .15s,background .15s;
+}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:var(--gold);color:#2b2213;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.btn-primary:hover{background:#dcae52}
+.btn-ghost{background:rgba(255,255,255,.12);color:#f4f8f4;border:1px solid rgba(255,255,255,.28)}
+.btn-ghost:hover{background:rgba(255,255,255,.22)}
+
+/* ---------- Stat band ---------- */
+.statband{
+  max-width:1100px;margin:-72px auto 0;padding:0 20px;position:relative;z-index:2;
+}
+.statgrid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
+}
+.stat{
+  background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow-lg);
+  padding:20px 18px;display:flex;align-items:center;gap:14px;
+}
+.stat .ico{
+  width:46px;height:46px;border-radius:13px;display:grid;place-items:center;font-size:22px;flex:none;
+}
+.stat .num{font-size:26px;font-weight:900;line-height:1.15;letter-spacing:-.02em}
+.stat .lbl{font-size:12.5px;color:var(--ink-soft);font-weight:500}
+.ring-wrap{position:relative;width:56px;height:56px;flex:none}
+.ring-wrap svg{transform:rotate(-90deg)}
+.ring-wrap .pct{
+  position:absolute;inset:0;display:grid;place-items:center;
+  font-size:13px;font-weight:900;color:var(--accent);
+}
+
+/* ---------- Layout ---------- */
+.wrap{max-width:1100px;margin:0 auto;padding:34px 20px 80px}
+
+/* ---------- Category rail ---------- */
+.cat-rail{
+  display:flex;gap:9px;overflow-x:auto;padding:6px 2px 14px;
+  scrollbar-width:thin;
+}
+.chip{
+  flex:none;display:inline-flex;align-items:center;gap:7px;
+  padding:9px 15px;border-radius:999px;background:var(--card);
+  border:1.5px solid var(--line);font-size:13.5px;font-weight:500;color:var(--ink-soft);
+  box-shadow:var(--shadow);transition:all .15s;white-space:nowrap;
+}
+.chip .cnt{
+  font-size:11px;font-weight:700;background:var(--bg);
+  border-radius:999px;padding:1px 7px;color:var(--ink-soft);
+}
+.chip:hover{border-color:var(--accent);color:var(--accent)}
+.chip.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.chip.active .cnt{background:rgba(255,255,255,.22);color:#fff}
+
+/* ---------- Toolbar ---------- */
+.toolbar{
+  display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:10px 0 22px;
+}
+.search{
+  flex:1 1 240px;display:flex;align-items:center;gap:9px;
+  background:var(--card);border:1.5px solid var(--line);border-radius:12px;
+  padding:10px 14px;box-shadow:var(--shadow);
+}
+.search input{border:none;outline:none;flex:1;background:transparent;font-size:14.5px;color:var(--ink)}
+.seg{
+  display:flex;background:var(--card);border:1.5px solid var(--line);
+  border-radius:12px;overflow:hidden;box-shadow:var(--shadow);
+}
+.seg button{
+  padding:10px 16px;font-size:13.5px;font-weight:500;color:var(--ink-soft);
+  transition:background .15s;
+}
+.seg button:not(:last-child){border-right:1.5px solid var(--line)}
+.seg button.active{background:var(--accent);color:#fff}
+.toolbar .btn-add{
+  background:var(--accent);color:#fff;border-radius:12px;padding:11px 18px;
+  font-weight:600;box-shadow:var(--shadow);
+}
+.toolbar .btn-add:hover{background:#336749}
+
+/* ---------- Section ---------- */
+.section-head{
+  display:flex;align-items:baseline;gap:12px;margin:28px 0 14px;flex-wrap:wrap;
+}
+.section-head h2{
+  font-family:"Nanum Myeongjo",serif;font-size:21px;font-weight:800;
+  display:flex;align-items:center;gap:9px;
+}
+.section-head .meta{font-size:13px;color:var(--ink-soft)}
+.section-head .bar{
+  flex:1 1 120px;height:7px;border-radius:99px;background:var(--line);overflow:hidden;min-width:110px;
+}
+.section-head .bar i{display:block;height:100%;border-radius:99px;background:var(--accent);transition:width .5s}
+
+/* ---------- Cards ---------- */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:13px}
+.card{
+  background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);
+  padding:16px 16px 14px;display:flex;gap:12px;align-items:flex-start;
+  border:1.5px solid transparent;transition:box-shadow .18s,transform .18s,border-color .18s;
+  position:relative;
+}
+.card:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px)}
+.card.done{background:#f8f7f2;border-color:var(--line)}
+.card .check{
+  flex:none;width:26px;height:26px;border-radius:9px;margin-top:2px;
+  border:2px solid #cfc9bc;display:grid;place-items:center;font-size:15px;color:#fff;
+  transition:all .18s;background:#fff;
+}
+.card .check:hover{border-color:var(--accent)}
+.card.done .check{background:var(--accent);border-color:var(--accent)}
+.card .body{flex:1;min-width:0}
+.card .no{
+  font-size:11px;font-weight:700;color:var(--gold);letter-spacing:.06em;
+}
+.card .title{font-size:15px;font-weight:600;letter-spacing:-.01em;word-break:keep-all}
+.card.done .title{color:var(--ink-soft);text-decoration:line-through;text-decoration-color:#b9b2a3;text-decoration-thickness:1.5px}
+.card .note{
+  margin-top:7px;font-size:12.5px;color:var(--ink-soft);
+  background:var(--accent-soft);border-radius:9px;padding:6px 10px;
+  display:flex;gap:6px;align-items:flex-start;word-break:keep-all;
+}
+.card .date{font-size:11.5px;color:var(--accent);font-weight:700;margin-top:6px;display:inline-flex;align-items:center;gap:4px}
+.card .ops{
+  position:absolute;top:10px;right:10px;display:flex;gap:2px;
+  opacity:0;transition:opacity .15s;
+}
+.card:hover .ops,.card:focus-within .ops{opacity:1}
+.card .ops button{
+  width:30px;height:30px;border-radius:9px;display:grid;place-items:center;
+  font-size:14px;color:var(--ink-soft);background:var(--bg);
+}
+.card .ops button:hover{background:var(--line);color:var(--ink)}
+.card .ops button.del:hover{background:#f7e4e1;color:var(--danger)}
+
+.empty{
+  text-align:center;padding:70px 20px;color:var(--ink-soft);
+}
+.empty .big{font-size:44px;margin-bottom:10px}
+
+/* ---------- Modal ---------- */
+.overlay{
+  position:fixed;inset:0;background:rgba(30,28,22,.5);backdrop-filter:blur(3px);
+  display:none;align-items:center;justify-content:center;z-index:50;padding:18px;
+}
+.overlay.show{display:flex;animation:fade .18s}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.modal{
+  background:var(--card);border-radius:20px;box-shadow:var(--shadow-lg);
+  width:100%;max-width:480px;max-height:92vh;overflow-y:auto;
+  padding:26px 24px 22px;animation:pop .2s;
+}
+@keyframes pop{from{transform:translateY(14px);opacity:0}to{transform:none;opacity:1}}
+.modal h3{
+  font-family:"Nanum Myeongjo",serif;font-size:20px;font-weight:800;margin-bottom:18px;
+  display:flex;align-items:center;gap:9px;
+}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:12.5px;font-weight:700;color:var(--ink-soft);margin-bottom:6px}
+.field input[type=text],.field input[type=date],.field select,.field textarea{
+  width:100%;padding:11px 13px;border:1.5px solid var(--line);border-radius:11px;
+  background:#fbfaf7;outline:none;transition:border-color .15s;color:var(--ink);
+}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--accent)}
+.field textarea{resize:vertical;min-height:74px}
+.switch-row{
+  display:flex;align-items:center;justify-content:space-between;
+  background:#fbfaf7;border:1.5px solid var(--line);border-radius:11px;padding:11px 13px;
+}
+.switch-row span{font-size:14px;font-weight:500}
+.switch{position:relative;width:46px;height:26px;flex:none}
+.switch input{opacity:0;width:0;height:0}
+.switch i{
+  position:absolute;inset:0;border-radius:99px;background:#d8d2c5;transition:.2s;
+}
+.switch i::after{
+  content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;
+  background:#fff;transition:.2s;box-shadow:0 1px 4px rgba(0,0,0,.25);
+}
+.switch input:checked + i{background:var(--accent)}
+.switch input:checked + i::after{transform:translateX(20px)}
+.modal-actions{display:flex;gap:9px;margin-top:20px}
+.modal-actions .btn{flex:1;justify-content:center;border-radius:12px;padding:12px}
+.btn-save{background:var(--accent);color:#fff;font-weight:700}
+.btn-save:hover{background:#336749}
+.btn-cancel{background:var(--bg);color:var(--ink-soft);font-weight:500}
+.btn-cancel:hover{background:var(--line)}
+.btn-danger{background:var(--danger);color:#fff;font-weight:700}
+.btn-danger:hover{background:#a94438}
+
+/* ---------- Toast ---------- */
+.toast{
+  position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(80px);
+  background:#2b2a27;color:#f6f4ef;font-size:14px;padding:12px 22px;border-radius:999px;
+  box-shadow:var(--shadow-lg);z-index:70;transition:transform .25s;pointer-events:none;
+  display:flex;align-items:center;gap:8px;max-width:90vw;
+}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+/* ---------- FAB ---------- */
+.fab{
+  position:fixed;right:22px;bottom:22px;z-index:40;
+  width:58px;height:58px;border-radius:50%;background:var(--gold);color:#2b2213;
+  font-size:27px;display:grid;place-items:center;box-shadow:0 8px 24px rgba(100,70,10,.35);
+  transition:transform .15s;
+}
+.fab:hover{transform:scale(1.07)}
+
+footer{
+  text-align:center;color:var(--ink-soft);font-size:12.5px;padding:30px 20px 42px;
+}
+footer b{color:var(--accent)}
+
+@media (max-width:760px){
+  .statgrid{grid-template-columns:repeat(2,1fr)}
+  .hero{padding:40px 18px 100px}
+  .grid{grid-template-columns:1fr}
+  .card .ops{opacity:1}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">✦ MY LIFE BUCKET LIST ✦</div>
+    <h1>내 인생의 <em>버킷리스트</em></h1>
+    <p class="tagline">바쁜 일상 속에서 놓치기 쉬운 가족, 건강, 자연, 여행, 배움, 기록, 나눔과 휴식 —
+    직접 해보고, 함께 웃고, 기억으로 남길 작은 행복 300가지.</p>
+    <div class="hero-actions">
+      <button class="btn btn-primary" onclick="openAdd()">＋ 새 버킷 추가</button>
+      <button class="btn btn-ghost" onclick="exportData()">⬇ 내보내기(백업)</button>
+      <button class="btn btn-ghost" onclick="document.getElementById('importFile').click()">⬆ 가져오기</button>
+      <button class="btn btn-ghost" onclick="confirmReset()">↺ 초기화</button>
+      <input type="file" id="importFile" accept=".json" hidden onchange="importData(event)">
+    </div>
+  </div>
+</header>
+
+<div class="statband">
+  <div class="statgrid">
+    <div class="stat">
+      <div class="ring-wrap">
+        <svg width="56" height="56" viewBox="0 0 56 56">
+          <circle cx="28" cy="28" r="24" fill="none" stroke="#e7e2d8" stroke-width="6"/>
+          <circle id="ringFg" cx="28" cy="28" r="24" fill="none" stroke="#3d7a5d" stroke-width="6"
+            stroke-linecap="round" stroke-dasharray="150.8" stroke-dashoffset="150.8"
+            style="transition:stroke-dashoffset .7s"/>
+        </svg>
+        <div class="pct" id="statPct">0%</div>
+      </div>
+      <div><div class="num" id="statRate">0%</div><div class="lbl">전체 달성률</div></div>
+    </div>
+    <div class="stat">
+      <div class="ico" style="background:#eef3f8">🎯</div>
+      <div><div class="num" id="statTotal">0</div><div class="lbl">전체 버킷</div></div>
+    </div>
+    <div class="stat">
+      <div class="ico" style="background:#e5f0ea">✅</div>
+      <div><div class="num" id="statDone" style="color:var(--accent)">0</div><div class="lbl">완료한 버킷</div></div>
+    </div>
+    <div class="stat">
+      <div class="ico" style="background:#fbf3e2">🌱</div>
+      <div><div class="num" id="statTodo" style="color:var(--gold)">0</div><div class="lbl">도전 중인 버킷</div></div>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+  <nav class="cat-rail" id="catRail"></nav>
+
+  <div class="toolbar">
+    <div class="search">
+      <span>🔍</span>
+      <input id="searchInput" type="text" placeholder="버킷리스트 검색… (제목, 소감)" oninput="state.q=this.value;render()">
+    </div>
+    <div class="seg" id="statusSeg">
+      <button data-s="all" class="active" onclick="setStatus('all',this)">전체</button>
+      <button data-s="todo" onclick="setStatus('todo',this)">도전 중</button>
+      <button data-s="done" onclick="setStatus('done',this)">완료</button>
+    </div>
+    <button class="btn-add" onclick="openAdd()">＋ 버킷 추가</button>
+  </div>
+
+  <div id="listArea"></div>
+</main>
+
+<button class="fab" title="새 버킷 추가" onclick="openAdd()">＋</button>
+
+<!-- Add / Edit modal -->
+<div class="overlay" id="editOverlay">
+  <div class="modal">
+    <h3 id="modalTitle">🌟 새 버킷 추가</h3>
+    <form id="editForm" onsubmit="saveItem(event)">
+      <div class="field">
+        <label>분야</label>
+        <select id="fCategory" required></select>
+      </div>
+      <div class="field">
+        <label>버킷리스트 내용</label>
+        <input type="text" id="fTitle" required maxlength="120" placeholder="예) 가족과 제주 올레길 걷기">
+      </div>
+      <div class="field">
+        <div class="switch-row">
+          <span>✅ 완료했어요</span>
+          <label class="switch"><input type="checkbox" id="fDone" onchange="toggleDoneFields()"><i></i></label>
+        </div>
+      </div>
+      <div class="field" id="fDateWrap" style="display:none">
+        <label>완료일</label>
+        <input type="date" id="fDate">
+      </div>
+      <div class="field">
+        <label>소감 · 메모</label>
+        <textarea id="fNote" maxlength="500" placeholder="완료 소감이나 계획 메모를 남겨보세요"></textarea>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-cancel" onclick="closeModal('editOverlay')">취소</button>
+        <button type="submit" class="btn btn-save">저장하기</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Delete confirm modal -->
+<div class="overlay" id="delOverlay">
+  <div class="modal" style="max-width:400px">
+    <h3>🗑️ 버킷 삭제</h3>
+    <p style="font-size:14.5px;color:var(--ink-soft);word-break:keep-all" id="delText"></p>
+    <div class="modal-actions">
+      <button type="button" class="btn btn-cancel" onclick="closeModal('delOverlay')">취소</button>
+      <button type="button" class="btn btn-danger" onclick="doDelete()">삭제</button>
+    </div>
+  </div>
+</div>
+
+<!-- Reset confirm modal -->
+<div class="overlay" id="resetOverlay">
+  <div class="modal" style="max-width:420px">
+    <h3>↺ 초기 목록으로 되돌리기</h3>
+    <p style="font-size:14.5px;color:var(--ink-soft);word-break:keep-all">
+      모든 변경 사항(완료 체크, 추가/수정/삭제)을 지우고 처음의 300개 목록으로 되돌립니다.
+      되돌리기 전에 <b>내보내기</b>로 백업해 두는 것을 권장합니다. 계속할까요?</p>
+    <div class="modal-actions">
+      <button type="button" class="btn btn-cancel" onclick="closeModal('resetOverlay')">취소</button>
+      <button type="button" class="btn btn-danger" onclick="doReset()">초기화</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<footer>
+  🌟 완료하면 체크하고, 완료일과 짧은 소감을 남기세요. 매년 생일이나 연초에 목록을 다시 읽고 삶의 변화에 맞게 수정합니다.<br>
+  데이터는 이 브라우저에 저장됩니다 · <b>내보내기</b>로 정기적으로 백업하세요.
+</footer>
+
+<script src="data.js"></script>
+<script>
+/* ============ 카테고리 아이콘 ============ */
+const CAT_META = {
+  "가족과 사랑":        {icon:"❤️"},
+  "농촌과 자연":        {icon:"🌾"},
+  "여행과 세계":        {icon:"✈️"},
+  "건강과 몸":          {icon:"💪"},
+  "연구와 창작":        {icon:"🔬"},
+  "나눔과 사회":        {icon:"🤝"},
+  "배움과 도전":        {icon:"📚"},
+  "기록과 추억":        {icon:"📷"},
+  "휴식과 일상 행복":   {icon:"☕"},
+  "은퇴와 인생 완성":   {icon:"🌅"},
+  "사람과 관계":        {icon:"👥"},
+  "소소한 모험":        {icon:"🧭"},
+  "집과 농촌 프로젝트": {icon:"🏡"},
+  "문화와 창작":        {icon:"🎨"},
+  "마음과 유산":        {icon:"🕊️"}
+};
+const catIcon = c => (CAT_META[c] && CAT_META[c].icon) || "🌟";
+
+/* ============ 저장소 ============ */
+const LS_KEY = "bucketList.v1";
+let items = load();
+let state = { cat:"all", status:"all", q:"" };
+let editingId = null, deletingId = null;
+
+function load(){
+  try{
+    const raw = localStorage.getItem(LS_KEY);
+    if(raw){
+      const parsed = JSON.parse(raw);
+      if(Array.isArray(parsed) && parsed.length) return parsed;
+    }
+  }catch(e){}
+  return SEED_DATA.map(x => ({...x}));
+}
+function persist(){
+  localStorage.setItem(LS_KEY, JSON.stringify(items));
+}
+function categories(){
+  const seen = [];
+  for(const it of items) if(!seen.includes(it.category)) seen.push(it.category);
+  return seen;
+}
+
+/* ============ 렌더링 ============ */
+function render(){
+  renderStats();
+  renderRail();
+  renderList();
+}
+
+function renderStats(){
+  const total = items.length;
+  const done  = items.filter(i=>i.done).length;
+  const rate  = total ? Math.round(done/total*100) : 0;
+  document.getElementById("statTotal").textContent = total;
+  document.getElementById("statDone").textContent  = done;
+  document.getElementById("statTodo").textContent  = total-done;
+  document.getElementById("statRate").textContent  = rate + "%";
+  document.getElementById("statPct").textContent   = rate + "%";
+  const C = 150.8;
+  document.getElementById("ringFg").style.strokeDashoffset = C - C*rate/100;
+}
+
+function renderRail(){
+  const rail = document.getElementById("catRail");
+  const cats = categories();
+  let html = chipHtml("all","🌟","전체", items.length, items.filter(i=>i.done).length);
+  for(const c of cats){
+    const list = items.filter(i=>i.category===c);
+    html += chipHtml(c, catIcon(c), c, list.length, list.filter(i=>i.done).length);
+  }
+  rail.innerHTML = html;
+}
+function chipHtml(key, icon, label, total, done){
+  const active = state.cat===key ? " active" : "";
+  return `<button class="chip${active}" onclick="setCat('${key.replace(/'/g,"\\'")}')">
+    <span>${icon}</span>${esc(label)}<span class="cnt">${done}/${total}</span></button>`;
+}
+
+function matches(it){
+  if(state.cat!=="all" && it.category!==state.cat) return false;
+  if(state.status==="done" && !it.done) return false;
+  if(state.status==="todo" && it.done) return false;
+  if(state.q){
+    const q = state.q.toLowerCase();
+    if(!(it.title.toLowerCase().includes(q) || (it.note||"").toLowerCase().includes(q))) return false;
+  }
+  return true;
+}
+
+function renderList(){
+  const area = document.getElementById("listArea");
+  const cats = state.cat==="all" ? categories() : [state.cat];
+  let html = "", shown = 0;
+
+  for(const c of cats){
+    const list = items.filter(i=>i.category===c && matches(i));
+    if(!list.length) continue;
+    const all = items.filter(i=>i.category===c);
+    const done = all.filter(i=>i.done).length;
+    const pct = all.length ? Math.round(done/all.length*100) : 0;
+    shown += list.length;
+    html += `<div class="section-head">
+        <h2>${catIcon(c)} ${esc(c)}</h2>
+        <div class="bar"><i style="width:${pct}%"></i></div>
+        <span class="meta">${done}/${all.length} 완료 · ${pct}%</span>
+      </div><div class="grid">`;
+    for(const it of list) html += cardHtml(it);
+    html += `</div>`;
+  }
+
+  if(!shown){
+    html = `<div class="empty"><div class="big">🍃</div>
+      조건에 맞는 버킷리스트가 없습니다.<br>검색어나 필터를 바꾸거나, 새 버킷을 추가해 보세요.</div>`;
+  }
+  area.innerHTML = html;
+}
+
+function cardHtml(it){
+  const dateHtml = it.done && it.doneDate ? `<div class="date">🗓️ ${esc(it.doneDate)} 완료</div>` : "";
+  const noteHtml = it.note ? `<div class="note"><span>💬</span><span>${esc(it.note)}</span></div>` : "";
+  return `<div class="card${it.done?" done":""}">
+    <button class="check" title="${it.done?"완료 취소":"완료로 표시"}" onclick="toggleDone(${it.id})">${it.done?"✓":""}</button>
+    <div class="body">
+      <div class="no">No.${it.id}</div>
+      <div class="title">${esc(it.title)}</div>
+      ${dateHtml}${noteHtml}
+    </div>
+    <div class="ops">
+      <button title="수정" onclick="openEdit(${it.id})">✏️</button>
+      <button class="del" title="삭제" onclick="askDelete(${it.id})">🗑️</button>
+    </div>
+  </div>`;
+}
+
+function esc(s){
+  return String(s ?? "").replace(/[&<>"']/g, m =>
+    ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
+}
+
+/* ============ 필터 ============ */
+function setCat(c){ state.cat = c; render(); }
+function setStatus(s, btn){
+  state.status = s;
+  document.querySelectorAll("#statusSeg button").forEach(b=>b.classList.toggle("active", b===btn));
+  renderList();
+}
+
+/* ============ 완료 토글 ============ */
+function toggleDone(id){
+  const it = items.find(i=>i.id===id);
+  if(!it) return;
+  it.done = !it.done;
+  if(it.done){
+    if(!it.doneDate) it.doneDate = new Date().toISOString().slice(0,10);
+    toast(`🎉 축하합니다! 「${it.title}」 완료!`);
+  }else{
+    it.doneDate = "";
+    toast("완료를 취소했습니다.");
+  }
+  persist(); render();
+}
+
+/* ============ 추가 / 수정 ============ */
+function fillCategorySelect(sel){
+  const el = document.getElementById("fCategory");
+  el.innerHTML = categories().map(c=>
+    `<option value="${esc(c)}"${c===sel?" selected":""}>${catIcon(c)} ${esc(c)}</option>`).join("");
+}
+function toggleDoneFields(){
+  const on = document.getElementById("fDone").checked;
+  document.getElementById("fDateWrap").style.display = on ? "" : "none";
+  if(on && !document.getElementById("fDate").value)
+    document.getElementById("fDate").value = new Date().toISOString().slice(0,10);
+}
+function openAdd(){
+  editingId = null;
+  document.getElementById("modalTitle").textContent = "🌟 새 버킷 추가";
+  fillCategorySelect(state.cat!=="all" ? state.cat : null);
+  document.getElementById("fTitle").value = "";
+  document.getElementById("fDone").checked = false;
+  document.getElementById("fDate").value = "";
+  document.getElementById("fNote").value = "";
+  toggleDoneFields();
+  showModal("editOverlay");
+  setTimeout(()=>document.getElementById("fTitle").focus(), 60);
+}
+function openEdit(id){
+  const it = items.find(i=>i.id===id);
+  if(!it) return;
+  editingId = id;
+  document.getElementById("modalTitle").textContent = `✏️ No.${id} 수정`;
+  fillCategorySelect(it.category);
+  document.getElementById("fTitle").value = it.title;
+  document.getElementById("fDone").checked = it.done;
+  document.getElementById("fDate").value = it.doneDate || "";
+  document.getElementById("fNote").value = it.note || "";
+  toggleDoneFields();
+  showModal("editOverlay");
+}
+function saveItem(ev){
+  ev.preventDefault();
+  const data = {
+    category: document.getElementById("fCategory").value,
+    title: document.getElementById("fTitle").value.trim(),
+    done: document.getElementById("fDone").checked,
+    doneDate: document.getElementById("fDone").checked ? document.getElementById("fDate").value : "",
+    note: document.getElementById("fNote").value.trim()
+  };
+  if(!data.title) return;
+  if(editingId===null){
+    const nextId = items.reduce((m,i)=>Math.max(m,i.id),0)+1;
+    items.push({id:nextId, ...data});
+    toast(`🌟 No.${nextId} 「${data.title}」 추가!`);
+  }else{
+    const it = items.find(i=>i.id===editingId);
+    Object.assign(it, data);
+    toast(`✏️ No.${editingId} 수정 완료`);
+  }
+  persist(); closeModal("editOverlay"); render();
+}
+
+/* ============ 삭제 ============ */
+function askDelete(id){
+  const it = items.find(i=>i.id===id);
+  if(!it) return;
+  deletingId = id;
+  document.getElementById("delText").innerHTML =
+    `<b>No.${id} — ${esc(it.title)}</b><br>이 버킷을 목록에서 삭제할까요? 삭제 후에는 되돌릴 수 없습니다.`;
+  showModal("delOverlay");
+}
+function doDelete(){
+  const it = items.find(i=>i.id===deletingId);
+  items = items.filter(i=>i.id!==deletingId);
+  persist(); closeModal("delOverlay"); render();
+  toast(`🗑️ 「${it ? it.title : ""}」 삭제됨`);
+}
+
+/* ============ 초기화 / 백업 ============ */
+function confirmReset(){ showModal("resetOverlay"); }
+function doReset(){
+  items = SEED_DATA.map(x=>({...x}));
+  persist(); closeModal("resetOverlay"); render();
+  toast("↺ 초기 300개 목록으로 되돌렸습니다.");
+}
+function exportData(){
+  const blob = new Blob([JSON.stringify(items, null, 1)], {type:"application/json"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = `bucket-list-backup-${new Date().toISOString().slice(0,10)}.json`;
+  a.click();
+  URL.revokeObjectURL(a.href);
+  toast("⬇ 백업 파일을 내려받았습니다.");
+}
+function importData(ev){
+  const file = ev.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    try{
+      const data = JSON.parse(reader.result);
+      if(!Array.isArray(data) || !data.every(x=>x && typeof x.title==="string" && typeof x.category==="string"))
+        throw new Error("형식 오류");
+      items = data.map((x,idx)=>({
+        id: Number.isInteger(x.id) ? x.id : idx+1,
+        category: x.category, title: x.title,
+        done: !!x.done, doneDate: x.doneDate || "", note: x.note || ""
+      }));
+      persist(); render();
+      toast(`⬆ ${items.length}개 항목을 가져왔습니다.`);
+    }catch(e){
+      toast("⚠️ 가져오기 실패: 올바른 백업 JSON 파일이 아닙니다.");
+    }
+  };
+  reader.readAsText(file);
+  ev.target.value = "";
+}
+
+/* ============ 공용 UI ============ */
+function showModal(id){ document.getElementById(id).classList.add("show"); }
+function closeModal(id){ document.getElementById(id).classList.remove("show"); }
+document.querySelectorAll(".overlay").forEach(o=>{
+  o.addEventListener("click", e=>{ if(e.target===o) o.classList.remove("show"); });
+});
+document.addEventListener("keydown", e=>{
+  if(e.key==="Escape") document.querySelectorAll(".overlay.show").forEach(o=>o.classList.remove("show"));
+});
+let toastTimer;
+function toast(msg){
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>t.classList.remove("show"), 2600);
+}
+
+render();
+</script>
+</body>
+</html>

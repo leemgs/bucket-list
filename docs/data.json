@@ -1,5 +1,5 @@
 {
- "savedAt": "2026-07-23T05:12:13.954Z",
+ "savedAt": "2026-07-23T05:23:07.858Z",
  "items": [
   {
    "id": 1,
@@ -2576,6 +2576,51 @@
    "done": false,
    "doneDate": "",
    "note": ""
+  },
+  {
+   "id": 301,
+   "category": "연구와 창작",
+   "title": "탑티어 국제학회에 제1저자 논문 제출하고 발표하기",
+   "done": true,
+   "doneDate": "",
+   "note": "",
+   "updatedAt": "2026-07-23T05:23:07.858Z"
+  },
+  {
+   "id": 302,
+   "category": "연구와 창작",
+   "title": "SCI(E)급 국제 저널에 논문 게재(등재)하기",
+   "done": true,
+   "doneDate": "",
+   "note": "",
+   "updatedAt": "2026-07-23T05:23:07.858Z"
+  },
+  {
+   "id": 303,
+   "category": "연구와 창작",
+   "title": "네이처(Nature) 계열 저널에 논문 제출해 보기",
+   "done": false,
+   "doneDate": "",
+   "note": "",
+   "updatedAt": "2026-07-23T05:23:07.858Z"
+  },
+  {
+   "id": 304,
+   "category": "나눔과 사회",
+   "title": "국제 학회·저널 리뷰어로 논문 심사 재능기부하기",
+   "done": true,
+   "doneDate": "",
+   "note": "",
+   "updatedAt": "2026-07-23T05:23:07.858Z"
+  },
+  {
+   "id": 305,
+   "category": "나눔과 사회",
+   "title": "국제학회 프로그램위원(PC)으로 학술 커뮤니티에 재능기부하기",
+   "done": false,
+   "doneDate": "",
+   "note": "",
+   "updatedAt": "2026-07-23T05:23:07.858Z"
   }
  ],
  "deleted": {}

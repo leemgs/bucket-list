@@ -256,6 +256,58 @@ input,select,textarea{font-family:inherit;font-size:15px}
 .btn-danger{background:var(--danger);color:#fff;font-weight:700}
 .btn-danger:hover{background:#a94438}
 
+/* ---------- View tabs ---------- */
+.view-tabs{
+  display:inline-flex;background:var(--card);border:1.5px solid var(--line);
+  border-radius:13px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:16px;
+}
+.view-tabs button{
+  padding:11px 22px;font-size:14.5px;font-weight:600;color:var(--ink-soft);
+  transition:background .15s;
+}
+.view-tabs button:not(:last-child){border-right:1.5px solid var(--line)}
+.view-tabs button.active{background:var(--accent);color:#fff}
+
+/* ---------- Dashboard ---------- */
+.dash-summary{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-bottom:22px;
+}
+.dash-sum-card{
+  border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);
+  display:flex;align-items:center;gap:13px;color:#fff;cursor:pointer;
+  transition:transform .15s,box-shadow .15s;border:none;text-align:left;font-family:inherit;
+}
+.dash-sum-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.dash-sum-card .n{font-size:30px;font-weight:900;line-height:1.1}
+.dash-sum-card .l{font-size:13px;opacity:.9;font-weight:500}
+.dash-sum-card .i{font-size:30px}
+.dash-sum-all{background:linear-gradient(135deg,#41576b,#5d7891)}
+.dash-sum-todo{background:linear-gradient(135deg,#b8862f,#d4a54e)}
+.dash-sum-done{background:linear-gradient(135deg,#2f5d46,#469468)}
+
+.dash-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:13px}
+.dash-card{
+  background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);
+  padding:16px;display:flex;align-items:center;gap:14px;cursor:pointer;
+  border:1.5px solid transparent;transition:all .18s;text-align:left;font-family:inherit;width:100%;
+}
+.dash-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px);border-color:var(--accent)}
+.dash-ring{position:relative;width:62px;height:62px;flex:none}
+.dash-ring svg{transform:rotate(-90deg)}
+.dash-ring .p{
+  position:absolute;inset:0;display:grid;place-items:center;
+  font-size:13.5px;font-weight:900;color:var(--accent);
+}
+.dash-card .info{flex:1;min-width:0}
+.dash-card .name{font-size:15px;font-weight:700;display:flex;align-items:center;gap:7px;margin-bottom:6px}
+.dash-card .bar{height:8px;border-radius:99px;background:var(--line);overflow:hidden;margin-bottom:7px}
+.dash-card .bar i{display:block;height:100%;border-radius:99px;background:var(--accent);transition:width .5s}
+.dash-card .nums{font-size:12px;color:var(--ink-soft);display:flex;gap:10px;flex-wrap:wrap}
+.dash-card .nums b{font-weight:700}
+.dash-card .nums .d{color:var(--accent)}
+.dash-card .nums .t{color:var(--gold)}
+@media (max-width:760px){.dash-summary{grid-template-columns:1fr}}
+
 /* ---------- Sync pill ---------- */
 .sync-pill{
   margin-top:16px;display:inline-flex;align-items:center;gap:7px;
@@ -365,6 +417,12 @@ footer b{color:var(--accent)}
 </div>
 
 <main class="wrap">
+  <div class="view-tabs" id="viewTabs">
+    <button class="active" data-v="list" onclick="setView('list')">📋 목록</button>
+    <button data-v="dash" onclick="setView('dash')">📊 대시보드</button>
+  </div>
+
+  <div id="listControls">
   <nav class="cat-rail" id="catRail"></nav>
 
   <div class="toolbar">
@@ -379,6 +437,7 @@ footer b{color:var(--accent)}
     </div>
     <button class="btn-add" onclick="openAdd()">＋ 버킷 추가</button>
   </div>
+  </div><!-- /listControls -->
 
   <div id="listArea"></div>
 </main>
@@ -526,7 +585,7 @@ const catIcon = c => (CAT_META[c] && CAT_META[c].icon) || "🌟";
 const LS_KEY = "bucketList.v1";
 let savedAt = null;              // 데이터 마지막 수정 시각(ISO)
 let items = loadLocal();
-let state = { cat:"all", status:"all", q:"" };
+let state = { cat:"all", status:"all", q:"", view:"list" };
 let editingId = null, deletingId = null;
 
 function loadLocal(){
@@ -827,8 +886,82 @@ function categories(){
 /* ============ 렌더링 ============ */
 function render(){
   renderStats();
-  renderRail();
-  renderList();
+  if(state.view === "dash"){
+    document.getElementById("listControls").style.display = "none";
+    renderDash();
+  }else{
+    document.getElementById("listControls").style.display = "";
+    renderRail();
+    renderList();
+  }
+}
+
+/* ============ 뷰 전환 ============ */
+function setView(v){
+  state.view = v;
+  document.querySelectorAll("#viewTabs button").forEach(b=>
+    b.classList.toggle("active", b.dataset.v === v));
+  render();
+}
+function gotoCat(c, status){
+  state.cat = c;
+  state.status = status || "all";
+  document.querySelectorAll("#statusSeg button").forEach(b=>
+    b.classList.toggle("active", b.dataset.s === state.status));
+  setView("list");
+  document.getElementById("viewTabs").scrollIntoView({behavior:"smooth"});
+}
+
+/* ============ 대시보드 ============ */
+function renderDash(){
+  const total = items.length;
+  const done  = items.filter(i=>i.done).length;
+  const todo  = total - done;
+
+  let html = `<div class="dash-summary">
+    <button class="dash-sum-card dash-sum-all" onclick="gotoCat('all','all')">
+      <span class="i">🎯</span><span><span class="n">${total}</span><br><span class="l">전체 버킷 · 목록 보기</span></span>
+    </button>
+    <button class="dash-sum-card dash-sum-todo" onclick="gotoCat('all','todo')">
+      <span class="i">🌱</span><span><span class="n">${todo}</span><br><span class="l">도전 중 · 목록 보기</span></span>
+    </button>
+    <button class="dash-sum-card dash-sum-done" onclick="gotoCat('all','done')">
+      <span class="i">✅</span><span><span class="n">${done}</span><br><span class="l">완료 · 목록 보기</span></span>
+    </button>
+  </div>`;
+
+  html += `<div class="section-head"><h2>📊 분야별 달성 현황</h2>
+    <span class="meta">카드를 누르면 해당 분야 목록으로 이동합니다</span></div>`;
+  html += `<div class="dash-grid">`;
+  const C = 2 * Math.PI * 26;   // r=26 링 둘레
+  for(const c of categories()){
+    const list = items.filter(i=>i.category===c);
+    const d = list.filter(i=>i.done).length;
+    const t = list.length - d;
+    const pct = list.length ? Math.round(d/list.length*100) : 0;
+    html += `<button class="dash-card" onclick="gotoCat('${c.replace(/'/g,"\\'")}','all')">
+      <div class="dash-ring">
+        <svg width="62" height="62" viewBox="0 0 62 62">
+          <circle cx="31" cy="31" r="26" fill="none" stroke="#e7e2d8" stroke-width="7"/>
+          <circle cx="31" cy="31" r="26" fill="none" stroke="#3d7a5d" stroke-width="7"
+            stroke-linecap="round" stroke-dasharray="${C.toFixed(1)}"
+            stroke-dashoffset="${(C - C*pct/100).toFixed(1)}"/>
+        </svg>
+        <div class="p">${pct}%</div>
+      </div>
+      <div class="info">
+        <div class="name">${catIcon(c)} ${esc(c)}</div>
+        <div class="bar"><i style="width:${pct}%"></i></div>
+        <div class="nums">
+          <span>🎯 전체 <b>${list.length}</b></span>
+          <span class="d">✅ 완료 <b>${d}</b></span>
+          <span class="t">🌱 도전 중 <b>${t}</b></span>
+        </div>
+      </div>
+    </button>`;
+  }
+  html += `</div>`;
+  document.getElementById("listArea").innerHTML = html;
 }
 
 function renderStats(){

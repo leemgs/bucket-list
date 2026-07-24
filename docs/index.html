@@ -50,6 +50,15 @@ input,select,textarea{font-family:inherit;font-size:15px}
   background-size:340px 340px;
 }
 .hero-inner{position:relative;max-width:1100px;margin:0 auto;text-align:center}
+.language-switcher{
+  position:absolute;right:0;top:-30px;display:flex;align-items:center;gap:4px;
+  padding:4px;background:rgba(0,0,0,.2);border:1px solid rgba(255,255,255,.22);
+  border-radius:999px;
+}
+.language-switcher button{
+  color:#d9e7dd;border-radius:999px;padding:5px 10px;font-size:12px;font-weight:700;
+}
+.language-switcher button.active{background:#fff;color:#2f5d46}
 .hero .eyebrow{
   display:inline-flex;align-items:center;gap:8px;
   font-size:13px;letter-spacing:.28em;font-weight:500;color:#d9e7dd;
@@ -261,12 +270,12 @@ input,select,textarea{font-family:inherit;font-size:15px}
   display:inline-flex;background:var(--card);border:1.5px solid var(--line);
   border-radius:13px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:16px;
 }
-.view-tabs button{
+.view-tabs button,.view-tabs a{
   padding:11px 22px;font-size:14.5px;font-weight:600;color:var(--ink-soft);
-  transition:background .15s;
+  transition:background .15s;text-decoration:none;
 }
-.view-tabs button:not(:last-child){border-right:1.5px solid var(--line)}
-.view-tabs button.active{background:var(--accent);color:#fff}
+.view-tabs > *:not(:last-child){border-right:1.5px solid var(--line)}
+.view-tabs .active{background:var(--accent);color:#fff}
 
 /* ---------- Dashboard ---------- */
 .dash-summary{
@@ -358,12 +367,14 @@ footer{
   text-align:center;color:var(--ink-soft);font-size:12.5px;padding:30px 20px 42px;
 }
 footer b{color:var(--accent)}
+footer a{color:var(--accent);font-weight:700}
 
 @media (max-width:760px){
   .statgrid{grid-template-columns:repeat(2,1fr)}
   .hero{padding:40px 18px 100px}
   .grid{grid-template-columns:1fr}
   .card .ops{opacity:1}
+  .language-switcher{right:0;top:-25px}
 }
 </style>
 </head>
@@ -371,16 +382,20 @@ footer b{color:var(--accent)}
 
 <header class="hero">
   <div class="hero-inner">
+    <div class="language-switcher" aria-label="Language">
+      <button type="button" data-lang="ko" onclick="setLanguage('ko')">KO</button>
+      <button type="button" data-lang="en" onclick="setLanguage('en')">EN</button>
+    </div>
     <div class="eyebrow">✦ MY LIFE BUCKET LIST ✦</div>
-    <h1>내 인생의 <em>버킷리스트</em></h1>
-    <p class="tagline">바쁜 일상 속에서 놓치기 쉬운 가족, 건강, 자연, 여행, 배움, 기록, 나눔과 휴식 —
+    <h1 id="heroTitle">내 인생의 <em>버킷리스트</em></h1>
+    <p class="tagline" id="heroTagline">바쁜 일상 속에서 놓치기 쉬운 가족, 건강, 자연, 여행, 배움, 기록, 나눔과 휴식 —
     직접 해보고, 함께 웃고, 기억으로 남길 작은 행복 300가지.</p>
     <div class="hero-actions">
-      <button class="btn btn-primary" onclick="openAdd()">＋ 새 버킷 추가</button>
-      <button class="btn btn-ghost" onclick="exportData()">⬇ 내보내기(백업)</button>
-      <button class="btn btn-ghost" onclick="document.getElementById('importFile').click()">⬆ 가져오기</button>
-      <button class="btn btn-ghost" onclick="confirmReset()">↺ 초기화</button>
-      <button class="btn btn-ghost" onclick="openGhSettings()">⚙ GitHub 연동</button>
+      <button id="addHeroBtn" class="btn btn-primary" onclick="openAdd()">＋ 새 버킷 추가</button>
+      <button id="exportBtn" class="btn btn-ghost" onclick="exportData()">⬇ 내보내기(백업)</button>
+      <button id="importBtn" class="btn btn-ghost" onclick="document.getElementById('importFile').click()">⬆ 가져오기</button>
+      <button id="resetBtn" class="btn btn-ghost" onclick="confirmReset()">↺ 초기화</button>
+      <button id="githubBtn" class="btn btn-ghost" onclick="openGhSettings()">⚙ GitHub 연동</button>
       <input type="file" id="importFile" accept=".json" hidden onchange="importData(event)">
     </div>
     <button class="sync-pill" id="syncPill" onclick="openGhSettings()">⛅ 연동 확인 중…</button>
@@ -417,10 +432,10 @@ footer b{color:var(--accent)}
 </div>
 
 <main class="wrap">
-  <div class="view-tabs" id="viewTabs">
-    <button class="active" data-v="list" onclick="setView('list')">📋 목록</button>
-    <button data-v="dash" onclick="setView('dash')">📊 대시보드</button>
-  </div>
+  <nav class="view-tabs" id="viewTabs" aria-label="Main navigation">
+    <a data-v="dash" href="?view=dashboard" onclick="setView('dash');return false">📊 <span>대시보드</span></a>
+    <a data-v="list" href="?view=list" onclick="setView('list');return false">📋 <span>목록</span></a>
+  </nav>
 
   <div id="listControls">
   <nav class="cat-rail" id="catRail"></nav>
@@ -555,9 +570,10 @@ footer b{color:var(--accent)}
 <div class="toast" id="toast"></div>
 
 <footer>
-  🌟 완료하면 체크하고, 완료일과 짧은 소감을 남기세요. 매년 생일이나 연초에 목록을 다시 읽고 삶의 변화에 맞게 수정합니다.<br>
-  <b>⚙ GitHub 연동</b>을 설정하면 변경 사항이 저장소의 <code>docs/data.json</code>에 자동 커밋됩니다 ·
-  미연동 시에는 이 브라우저에만 저장되니 <b>내보내기</b>로 백업하세요.
+  <span id="footerHelp">🌟 완료하면 체크하고, 완료일과 짧은 소감을 남기세요. 매년 생일이나 연초에 목록을 다시 읽고 삶의 변화에 맞게 수정합니다.</span><br>
+  <span id="footerSync"><b>⚙ GitHub 연동</b>을 설정하면 변경 사항이 저장소의 <code>docs/data.json</code>에 자동 커밋됩니다 ·
+  미연동 시에는 이 브라우저에만 저장되니 <b>내보내기</b>로 백업하세요.</span><br>
+  <a href="https://github.com/leemgs/bucket-list" target="_blank" rel="noopener noreferrer">GitHub · leemgs/bucket-list ↗</a>
 </footer>
 
 <script src="data.js"></script>
@@ -581,13 +597,44 @@ const CAT_META = {
   "마음과 유산":        {icon:"🕊️"}
 };
 const catIcon = c => (CAT_META[c] && CAT_META[c].icon) || "🌟";
+const CAT_EN = {
+  "가족과 사랑":"Family & Love","농촌과 자연":"Country & Nature","여행과 세계":"Travel & World",
+  "건강과 몸":"Health & Fitness","연구와 창작":"Research & Creation","나눔과 사회":"Giving & Community",
+  "배움과 도전":"Learning & Challenges","기록과 추억":"Records & Memories",
+  "휴식과 일상 행복":"Rest & Everyday Joy","은퇴와 인생 완성":"Retirement & Life",
+  "사람과 관계":"People & Relationships","소소한 모험":"Everyday Adventures",
+  "집과 농촌 프로젝트":"Home & Country Projects","문화와 창작":"Culture & Creativity",
+  "마음과 유산":"Mind & Legacy"
+};
+const COPY = {
+  ko:{title:"내 인생의 <em>버킷리스트</em>",tagline:"바쁜 일상 속에서 놓치기 쉬운 가족, 건강, 자연, 여행, 배움, 기록, 나눔과 휴식 —<br>직접 해보고, 함께 웃고, 기억으로 남길 작은 행복 300가지.",
+    dashboard:"대시보드",list:"목록",all:"전체",todo:"도전 중",done:"완료",totalBuckets:"전체 버킷",viewList:"목록 보기",
+    categoryProgress:"분야별 달성 현황",cardHint:"카드를 누르면 해당 분야 목록으로 이동합니다",total:"전체",
+    completed:"완료",inProgress:"도전 중",completeSuffix:"완료",empty:"조건에 맞는 버킷리스트가 없습니다.<br>검색어나 필터를 바꾸거나, 새 버킷을 추가해 보세요.",
+    add:"＋ 새 버킷 추가",addShort:"＋ 버킷 추가",export:"⬇ 내보내기(백업)",import:"⬆ 가져오기",reset:"↺ 초기화",github:"⚙ GitHub 연동",
+    search:"버킷리스트 검색… (제목, 소감)",rate:"전체 달성률",totalStat:"전체 버킷",doneStat:"완료한 버킷",todoStat:"도전 중인 버킷",
+    footer:"🌟 완료하면 체크하고, 완료일과 짧은 소감을 남기세요. 매년 생일이나 연초에 목록을 다시 읽고 삶의 변화에 맞게 수정합니다.",
+    footerSync:"<b>⚙ GitHub 연동</b>을 설정하면 변경 사항이 저장소의 <code>docs/data.json</code>에 자동 커밋됩니다 · 미연동 시에는 이 브라우저에만 저장되니 <b>내보내기</b>로 백업하세요."},
+  en:{title:"My Life <em>Bucket List</em>",tagline:"Family, health, nature, travel, learning, memories, giving, and rest —<br>300 small joys to experience, share, and remember.",
+    dashboard:"Dashboard",list:"List",all:"All",todo:"In progress",done:"Completed",totalBuckets:"Total buckets",viewList:"View list",
+    categoryProgress:"Progress by category",cardHint:"Select a card to view that category",total:"Total",
+    completed:"Completed",inProgress:"In progress",completeSuffix:"complete",empty:"No bucket-list items match these filters.<br>Try another search or filter, or add a new bucket.",
+    add:"＋ Add bucket",addShort:"＋ Add bucket",export:"⬇ Export (backup)",import:"⬆ Import",reset:"↺ Reset",github:"⚙ GitHub sync",
+    search:"Search buckets… (title or note)",rate:"Overall progress",totalStat:"Total buckets",doneStat:"Completed",todoStat:"In progress",
+    footer:"🌟 Check off completed goals and record the date and a short reflection. Revisit the list each year and adapt it as life changes.",
+    footerSync:"Set up <b>⚙ GitHub sync</b> to commit changes automatically to <code>docs/data.json</code>. Without sync, data stays only in this browser, so use <b>Export</b> for backups."}
+};
+let language = new URLSearchParams(location.search).get("lang") === "en" ? "en" : "ko";
+const tr = key => COPY[language][key] || key;
+const catLabel = c => language === "en" ? (CAT_EN[c] || c) : c;
 
 /* ============ 저장소 ============ */
 const LS_KEY = "bucketList.v1";
 let savedAt = null;              // 데이터 마지막 수정 시각(ISO)
 let tombs = {};                  // 삭제 기록 {id: 삭제시각ISO} — 기기 간 병합용
 let items = loadLocal();
-let state = { cat:"all", status:"all", q:"", view:"list" };
+const requestedView = new URLSearchParams(location.search).get("view");
+let state = { cat:"all", status:"all", q:"", view:requestedView === "list" ? "list" : "dash" };
 let editingId = null, deletingId = null;
 
 function loadLocal(){
@@ -936,11 +983,47 @@ function render(){
 }
 
 /* ============ 뷰 전환 ============ */
-function setView(v){
+function syncUrl(){
+  const url = new URL(location.href);
+  url.searchParams.set("view", state.view === "list" ? "list" : "dashboard");
+  if(language === "en") url.searchParams.set("lang","en"); else url.searchParams.delete("lang");
+  history.replaceState({view:state.view,lang:language},"",url);
+}
+function setView(v, updateUrl=true){
   state.view = v;
-  document.querySelectorAll("#viewTabs button").forEach(b=>
+  document.querySelectorAll("#viewTabs [data-v]").forEach(b=>
     b.classList.toggle("active", b.dataset.v === v));
+  if(updateUrl) syncUrl();
   render();
+}
+function setLanguage(lang){
+  language = lang === "en" ? "en" : "ko";
+  applyLanguage();
+  syncUrl();
+  render();
+}
+function applyLanguage(){
+  document.documentElement.lang = language;
+  document.title = language === "en" ? "My Life Bucket List 300" : "내 인생의 버킷리스트 300";
+  document.querySelectorAll(".language-switcher button").forEach(b=>b.classList.toggle("active",b.dataset.lang===language));
+  document.getElementById("heroTitle").innerHTML = tr("title");
+  document.getElementById("heroTagline").innerHTML = tr("tagline");
+  document.getElementById("addHeroBtn").textContent = tr("add");
+  document.getElementById("exportBtn").textContent = tr("export");
+  document.getElementById("importBtn").textContent = tr("import");
+  document.getElementById("resetBtn").textContent = tr("reset");
+  document.getElementById("githubBtn").textContent = tr("github");
+  document.querySelector('#viewTabs [data-v="dash"] span').textContent = tr("dashboard");
+  document.querySelector('#viewTabs [data-v="list"] span').textContent = tr("list");
+  document.querySelector('#viewTabs [data-v="dash"]').href = `?view=dashboard${language==="en"?"&lang=en":""}`;
+  document.querySelector('#viewTabs [data-v="list"]').href = `?view=list${language==="en"?"&lang=en":""}`;
+  document.querySelectorAll("#statusSeg button").forEach(b=>b.textContent=tr(b.dataset.s));
+  document.getElementById("searchInput").placeholder = tr("search");
+  document.querySelector(".btn-add").textContent = tr("addShort");
+  const labels=document.querySelectorAll(".stat .lbl");
+  [tr("rate"),tr("totalStat"),tr("doneStat"),tr("todoStat")].forEach((x,i)=>labels[i].textContent=x);
+  document.getElementById("footerHelp").textContent=tr("footer");
+  document.getElementById("footerSync").innerHTML=tr("footerSync");
 }
 function gotoCat(c, status){
   state.cat = c;
@@ -959,18 +1042,18 @@ function renderDash(){
 
   let html = `<div class="dash-summary">
     <button class="dash-sum-card dash-sum-all" onclick="gotoCat('all','all')">
-      <span class="i">🎯</span><span><span class="n">${total}</span><br><span class="l">전체 버킷 · 목록 보기</span></span>
+      <span class="i">🎯</span><span><span class="n">${total}</span><br><span class="l">${tr("totalBuckets")} · ${tr("viewList")}</span></span>
     </button>
     <button class="dash-sum-card dash-sum-todo" onclick="gotoCat('all','todo')">
-      <span class="i">🌱</span><span><span class="n">${todo}</span><br><span class="l">도전 중 · 목록 보기</span></span>
+      <span class="i">🌱</span><span><span class="n">${todo}</span><br><span class="l">${tr("inProgress")} · ${tr("viewList")}</span></span>
     </button>
     <button class="dash-sum-card dash-sum-done" onclick="gotoCat('all','done')">
-      <span class="i">✅</span><span><span class="n">${done}</span><br><span class="l">완료 · 목록 보기</span></span>
+      <span class="i">✅</span><span><span class="n">${done}</span><br><span class="l">${tr("completed")} · ${tr("viewList")}</span></span>
     </button>
   </div>`;
 
-  html += `<div class="section-head"><h2>📊 분야별 달성 현황</h2>
-    <span class="meta">카드를 누르면 해당 분야 목록으로 이동합니다</span></div>`;
+  html += `<div class="section-head"><h2>📊 ${tr("categoryProgress")}</h2>
+    <span class="meta">${tr("cardHint")}</span></div>`;
   html += `<div class="dash-grid">`;
   const C = 2 * Math.PI * 26;   // r=26 링 둘레
   for(const c of categories()){
@@ -989,12 +1072,12 @@ function renderDash(){
         <div class="p">${pct}%</div>
       </div>
       <div class="info">
-        <div class="name">${catIcon(c)} ${esc(c)}</div>
+        <div class="name">${catIcon(c)} ${esc(catLabel(c))}</div>
         <div class="bar"><i style="width:${pct}%"></i></div>
         <div class="nums">
-          <span>🎯 전체 <b>${list.length}</b></span>
-          <span class="d">✅ 완료 <b>${d}</b></span>
-          <span class="t">🌱 도전 중 <b>${t}</b></span>
+          <span>🎯 ${tr("total")} <b>${list.length}</b></span>
+          <span class="d">✅ ${tr("completed")} <b>${d}</b></span>
+          <span class="t">🌱 ${tr("inProgress")} <b>${t}</b></span>
         </div>
       </div>
     </button>`;
@@ -1019,10 +1102,10 @@ function renderStats(){
 function renderRail(){
   const rail = document.getElementById("catRail");
   const cats = categories();
-  let html = chipHtml("all","🌟","전체", items.length, items.filter(i=>i.done).length);
+  let html = chipHtml("all","🌟",tr("all"), items.length, items.filter(i=>i.done).length);
   for(const c of cats){
     const list = items.filter(i=>i.category===c);
-    html += chipHtml(c, catIcon(c), c, list.length, list.filter(i=>i.done).length);
+    html += chipHtml(c, catIcon(c), catLabel(c), list.length, list.filter(i=>i.done).length);
   }
   rail.innerHTML = html;
 }
@@ -1056,17 +1139,16 @@ function renderList(){
     const pct = all.length ? Math.round(done/all.length*100) : 0;
     shown += list.length;
     html += `<div class="section-head">
-        <h2>${catIcon(c)} ${esc(c)}</h2>
+        <h2>${catIcon(c)} ${esc(catLabel(c))}</h2>
         <div class="bar"><i style="width:${pct}%"></i></div>
-        <span class="meta">${done}/${all.length} 완료 · ${pct}%</span>
+        <span class="meta">${done}/${all.length} ${tr("completeSuffix")} · ${pct}%</span>
       </div><div class="grid">`;
     for(const it of list) html += cardHtml(it);
     html += `</div>`;
   }
 
   if(!shown){
-    html = `<div class="empty"><div class="big">🍃</div>
-      조건에 맞는 버킷리스트가 없습니다.<br>검색어나 필터를 바꾸거나, 새 버킷을 추가해 보세요.</div>`;
+    html = `<div class="empty"><div class="big">🍃</div>${tr("empty")}</div>`;
   }
   area.innerHTML = html;
 }
@@ -1288,7 +1370,9 @@ function toast(msg){
   toastTimer = setTimeout(()=>t.classList.remove("show"), 2600);
 }
 
-render();
+applyLanguage();
+setView(state.view, false);
+syncUrl();
 initRemote();
 </script>
 </body>

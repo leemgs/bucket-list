@@ -5,6 +5,10 @@
 
 **▶ 홈페이지: <https://leemgs.github.io/bucket-list/>**
 
+- 대시보드: <https://leemgs.github.io/bucket-list/?view=dashboard>
+- 버킷리스트 목록: <https://leemgs.github.io/bucket-list/?view=list>
+- English dashboard: <https://leemgs.github.io/bucket-list/?view=dashboard&lang=en>
+
 ## ✨ 주요 기능
 
 | 기능 | 설명 |

@@ -1,37 +1,41 @@
 {
- "savedAt": "2026-07-30T10:54:02.826Z",
+ "savedAt": "2026-07-31T01:09:00.899Z",
  "items": [
   {
    "id": 1,
    "category": "귀농과 땅",
    "title": "주곡리에 두 번째 땅 마련하고 등기까지 마치기",
-   "done": false,
-   "doneDate": "",
-   "note": ""
+   "done": true,
+   "doneDate": "2025-11-20",
+   "note": "주곡리 두 번째 토지 취득·등기 (연간 목표 2024·2025 달성)",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 2,
    "category": "귀농과 땅",
    "title": "가을에 이듬해 농사지을 씨앗·모종 직접 준비하기",
-   "done": false,
-   "doneDate": "",
-   "note": ""
+   "done": true,
+   "doneDate": "2025-10-05",
+   "note": "가을 파종용 씨앗·모종 직접 준비 (연간 목표 2026)",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 3,
    "category": "귀농과 땅",
    "title": "천안 텃밭에 첫 작물 심고 수확까지 완주하기",
-   "done": false,
-   "doneDate": "",
-   "note": ""
+   "done": true,
+   "doneDate": "2019-10-12",
+   "note": "천안 텃밭 작물 재배·첫 수확 (연간 목표 2018)",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 4,
    "category": "귀농과 땅",
    "title": "법원 경매로 마음에 드는 시골 땅 낙찰받기",
-   "done": false,
-   "doneDate": "",
-   "note": ""
+   "done": true,
+   "doneDate": "2017-08-15",
+   "note": "법원 경매로 시골 토지 낙찰 (연간 목표 2017)",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 5,
@@ -39,31 +43,35 @@
    "title": "귀농 후 살 작은 농가주택 설계도 그려보기",
    "done": false,
    "doneDate": "",
-   "note": ""
+   "note": "",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 6,
    "category": "귀농과 땅",
    "title": "사계절 작물 달력 만들어 순환 농사 짓기",
-   "done": false,
-   "doneDate": "",
-   "note": ""
+   "done": true,
+   "doneDate": "2023-09-01",
+   "note": "사계절 작물 순환 재배 정착",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 7,
    "category": "귀농과 땅",
    "title": "유실수(감·대추·매실) 묘목 심어 첫 열매 맛보기",
-   "done": false,
-   "doneDate": "",
-   "note": ""
+   "done": true,
+   "doneDate": "2024-09-20",
+   "note": "감·대추·매실 묘목 식재 후 첫 수확",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 8,
    "category": "귀농과 땅",
    "title": "손수 기른 작물로 김장과 장 담그기",
-   "done": false,
-   "doneDate": "",
-   "note": ""
+   "done": true,
+   "doneDate": "2024-11-30",
+   "note": "직접 기른 작물로 김장 완료",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 9,
@@ -71,7 +79,8 @@
    "title": "빗물 저장·태양광 등 자립형 시골살이 인프라 갖추기",
    "done": false,
    "doneDate": "",
-   "note": ""
+   "note": "",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 10,
@@ -79,55 +88,62 @@
    "title": "주말 농부에서 전업 귀농으로 전환하는 계획 완성하기",
    "done": false,
    "doneDate": "",
-   "note": ""
+   "note": "",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 11,
    "category": "영어와 언어",
    "title": "영어 전화 스터디 1년 하루도 빠짐없이 이어가기",
-   "done": false,
-   "doneDate": "",
-   "note": ""
+   "done": true,
+   "doneDate": "2024-03-12",
+   "note": "주말 전화영어(Mel 선생님) 1년 이상 지속 — Google Calendar 확인",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 12,
    "category": "영어와 언어",
    "title": "OPIc 최고 등급(AL) 다시 한번 갱신하기",
-   "done": false,
-   "doneDate": "",
-   "note": ""
+   "done": true,
+   "doneDate": "2020-06-01",
+   "note": "OPIc AL 취득 (연간 목표 2018~2020)",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 13,
    "category": "영어와 언어",
    "title": "원어민과 30분 자유 주제 토론 막힘없이 해내기",
-   "done": false,
-   "doneDate": "",
-   "note": ""
+   "done": true,
+   "doneDate": "2023-05-01",
+   "note": "전화영어·프리토킹으로 자유 주제 토론 가능",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 14,
    "category": "영어와 언어",
    "title": "BBB코리아 통역 봉사 100건 달성하기",
-   "done": false,
-   "doneDate": "",
-   "note": ""
+   "done": true,
+   "doneDate": "2022-10-01",
+   "note": "BBB코리아 통역 자원봉사 지속 (2010~)",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 15,
    "category": "영어와 언어",
    "title": "좋아하는 미드(Friends)로 표현 300개 내 것으로 만들기",
-   "done": false,
-   "doneDate": "",
-   "note": ""
+   "done": true,
+   "doneDate": "2021-02-01",
+   "note": "미드 Friends 시즌1 학습으로 표현 습득 (연간 목표)",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 16,
    "category": "영어와 언어",
    "title": "해외 학회에서 영어 발표와 질의응답까지 매끄럽게 마치기",
-   "done": false,
-   "doneDate": "",
-   "note": ""
+   "done": true,
+   "doneDate": "2023-05-01",
+   "note": "MobiCom·ICSE·EuroSys·OLS 등 해외 학회 영어 발표",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 17,
@@ -135,7 +151,8 @@
    "title": "영어로 기술 블로그 글 50편 쓰기",
    "done": false,
    "doneDate": "",
-   "note": ""
+   "note": "",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 18,
@@ -143,7 +160,8 @@
    "title": "일본어 기초 회화로 여행에서 자유롭게 소통하기",
    "done": false,
    "doneDate": "",
-   "note": ""
+   "note": "",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 19,
@@ -151,23 +169,26 @@
    "title": "은퇴 후에도 매년 top-tier 논문 한 편 이상 내기",
    "done": false,
    "doneDate": "",
-   "note": ""
+   "note": "",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 20,
    "category": "연구와 논문",
    "title": "독립 연구자로서 나만의 연구 주제 정립하기",
-   "done": false,
-   "doneDate": "",
-   "note": ""
+   "done": true,
+   "doneDate": "2020-11-01",
+   "note": "메모리 관리·온디바이스 AI 등 나만의 연구 주제 확립",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 21,
    "category": "연구와 논문",
    "title": "IEEE 저널 리뷰어·TPC 활동 꾸준히 이어가기",
-   "done": false,
-   "doneDate": "",
-   "note": ""
+   "done": true,
+   "doneDate": "2023-08-01",
+   "note": "IEEE TCAD·TACO·ICCE 등 리뷰어/TPC 활동 지속",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 22,
@@ -175,15 +196,17 @@
    "title": "구글 스칼라 인용수 다음 목표치 달성하기",
    "done": false,
    "doneDate": "",
-   "note": ""
+   "note": "",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 23,
    "category": "연구와 논문",
    "title": "후배 연구자와 공동 논문 지도해 함께 게재하기",
-   "done": false,
-   "doneDate": "",
-   "note": ""
+   "done": true,
+   "doneDate": "2021-05-01",
+   "note": "후배 연구자와 공동 논문 게재 (NNStreamer 등)",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 24,
@@ -191,15 +214,17 @@
    "title": "평생의 연구를 정리한 서베이(survey) 논문 한 편 쓰기",
    "done": false,
    "doneDate": "",
-   "note": ""
+   "note": "",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 25,
    "category": "연구와 논문",
    "title": "온디바이스 AI·엣지 컴퓨팅 새 아이디어 특허로 남기기",
-   "done": false,
-   "doneDate": "",
-   "note": ""
+   "done": true,
+   "doneDate": "2019-01-01",
+   "note": "온디바이스 AI 테스트베드 등 특허 출원",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 26,
@@ -207,23 +232,26 @@
    "title": "은퇴 후에도 리눅스 커널에 패치 계속 기여하기",
    "done": false,
    "doneDate": "",
-   "note": ""
+   "note": "",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 27,
    "category": "오픈소스와 기술",
    "title": "데이터 사이언티스트 역량(Lv.2) 실전 프로젝트로 증명하기",
-   "done": false,
-   "doneDate": "",
-   "note": ""
+   "done": true,
+   "doneDate": "2024-06-01",
+   "note": "데이터 사이언스 역량 확보 (연간 목표 2023·2024)",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 28,
    "category": "오픈소스와 기술",
    "title": "클라우드 보안 도메인 전문가 과정 수료하기",
-   "done": false,
-   "doneDate": "",
-   "note": ""
+   "done": true,
+   "doneDate": "2024-05-01",
+   "note": "클라우드 보안 도메인 전문가 과정 (연간 목표 2024)",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 29,
@@ -231,7 +259,8 @@
    "title": "나만의 오픈소스 프로젝트 GitHub 별 1,000개 받기",
    "done": false,
    "doneDate": "",
-   "note": ""
+   "note": "",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 30,
@@ -239,15 +268,17 @@
    "title": "온디바이스 LLM을 라즈베리파이에서 직접 돌려보기",
    "done": false,
    "doneDate": "",
-   "note": ""
+   "note": "",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 31,
    "category": "오픈소스와 기술",
    "title": "오랜 기술 노하우를 오픈소스 문서로 정리해 공개하기",
-   "done": false,
-   "doneDate": "",
-   "note": ""
+   "done": true,
+   "doneDate": "2021-05-01",
+   "note": "TAOS-CI·NNStreamer 등 오픈소스 문서 공개",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 32,
@@ -255,7 +286,8 @@
    "title": "개인 홈서버(leemgs.mooo.com)를 24시간 안정 운영하기",
    "done": false,
    "doneDate": "",
-   "note": ""
+   "note": "",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 33,
@@ -263,31 +295,35 @@
    "title": "유튜브 채널 '두루루(dudururu)' 구독자 1만 명 만들기",
    "done": false,
    "doneDate": "",
-   "note": ""
+   "note": "",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 34,
    "category": "지식 나눔과 교육",
    "title": "아이들에게 C 프로그래밍 가르쳐 첫 프로그램 완성시키기",
-   "done": false,
-   "doneDate": "",
-   "note": ""
+   "done": true,
+   "doneDate": "2022-08-01",
+   "note": "자녀에게 C 프로그래밍 지도 (연간 목표 2016·2022)",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 35,
    "category": "지식 나눔과 교육",
    "title": "청소년 정보올림피아드 지도해 수상자 배출하기",
-   "done": false,
-   "doneDate": "",
-   "note": ""
+   "done": true,
+   "doneDate": "2017-11-01",
+   "note": "자녀 정보올림피아드 지도 (연간 목표 2017)",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 36,
    "category": "지식 나눔과 교육",
    "title": "어린이 IT 경진대회 멘토·심사위원으로 참여하기",
-   "done": false,
-   "doneDate": "",
-   "note": ""
+   "done": true,
+   "doneDate": "2018-07-01",
+   "note": "어린이 IT 경진대회 지원 (연간 목표 2018)",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 37,
@@ -295,23 +331,26 @@
    "title": "임베디드·리눅스 온라인 강의 시리즈 완성하기",
    "done": false,
    "doneDate": "",
-   "note": ""
+   "note": "",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 38,
    "category": "지식 나눔과 교육",
    "title": "후배 엔지니어 10명 멘토링해 성장 돕기",
-   "done": false,
-   "doneDate": "",
-   "note": ""
+   "done": true,
+   "doneDate": "2022-12-01",
+   "note": "사내 후배 엔지니어 멘토링",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 39,
    "category": "지식 나눔과 교육",
    "title": "대학에서 특강·겸임 강의 한 학기 진행하기",
-   "done": false,
-   "doneDate": "",
-   "note": ""
+   "done": true,
+   "doneDate": "2021-05-01",
+   "note": "ICSE·ICMU 등 초청 강연·세션 의장 진행",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 40,
@@ -319,7 +358,8 @@
    "title": "두 번째 기술 서적 집필해 출간하기",
    "done": false,
    "doneDate": "",
-   "note": ""
+   "note": "",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 41,
@@ -327,15 +367,17 @@
    "title": "30년 엔지니어 인생을 담은 에세이·회고록 쓰기",
    "done": false,
    "doneDate": "",
-   "note": ""
+   "note": "",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 42,
    "category": "집필과 창작",
    "title": "네이버 블로그(invain)에 연재 글 100편 채우기",
-   "done": false,
-   "doneDate": "",
-   "note": ""
+   "done": true,
+   "doneDate": "2020-01-01",
+   "note": "blog.naver.com/invain 기술 글 연재",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 43,
@@ -343,31 +385,35 @@
    "title": "라즈베리파이 IoT 책 개정판 내기",
    "done": false,
    "doneDate": "",
-   "note": ""
+   "note": "",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 44,
    "category": "집필과 창작",
    "title": "나의 지식을 정리한 개인 위키(지식 정원) 만들기",
-   "done": false,
-   "doneDate": "",
-   "note": ""
+   "done": true,
+   "doneDate": "2026-07-01",
+   "note": "leemgs.github.io·fedorapeople 지식 아카이브 구축",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 45,
    "category": "여행과 세계",
    "title": "아이들과 일본 다시 한번 함께 여행하기",
-   "done": false,
-   "doneDate": "",
-   "note": ""
+   "done": true,
+   "doneDate": "2017-08-01",
+   "note": "자녀와 일본 여행 (연간 목표 2017)",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 46,
    "category": "여행과 세계",
    "title": "가보고 싶던 해외 학회 개최 도시 관광까지 즐기기",
-   "done": false,
-   "doneDate": "",
-   "note": ""
+   "done": true,
+   "doneDate": "2023-05-01",
+   "note": "학회 개최 도시(마드리드·런던·오타와 등) 관광",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 47,
@@ -375,7 +421,8 @@
    "title": "오로라를 직접 두 눈으로 보기",
    "done": false,
    "doneDate": "",
-   "note": ""
+   "note": "",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 48,
@@ -383,15 +430,17 @@
    "title": "아내와 단둘이 유럽 한 달 살기",
    "done": false,
    "doneDate": "",
-   "note": ""
+   "note": "",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 49,
    "category": "여행과 세계",
    "title": "세계 오픈소스 커뮤니티 친구들 직접 찾아가 만나기",
-   "done": false,
-   "doneDate": "",
-   "note": ""
+   "done": true,
+   "doneDate": "2019-05-01",
+   "note": "해외 학회에서 오픈소스 커뮤니티 동료들과 교류",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 50,
@@ -399,23 +448,26 @@
    "title": "국내 100대 명산 중 20곳 오르기",
    "done": false,
    "doneDate": "",
-   "note": ""
+   "note": "",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 51,
    "category": "건강과 체력",
    "title": "매주 3회 규칙적인 운동 1년 습관으로 굳히기",
-   "done": false,
-   "doneDate": "",
-   "note": ""
+   "done": true,
+   "doneDate": "2024-12-01",
+   "note": "주 3회 규칙적 운동 습관화",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 52,
    "category": "건강과 체력",
    "title": "체력 나이를 실제 나이보다 젊게 유지하기",
-   "done": false,
-   "doneDate": "",
-   "note": ""
+   "done": true,
+   "doneDate": "2024-12-01",
+   "note": "체력 관리로 활력 유지",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 53,
@@ -423,15 +475,17 @@
    "title": "하프 마라톤 완주하기",
    "done": false,
    "doneDate": "",
-   "note": ""
+   "note": "",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 54,
    "category": "건강과 체력",
    "title": "매년 종합검진으로 건강 지표 꾸준히 관리하기",
-   "done": false,
-   "doneDate": "",
-   "note": ""
+   "done": true,
+   "doneDate": "2025-01-01",
+   "note": "연 1회 종합검진 지속",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 55,
@@ -439,39 +493,44 @@
    "title": "시골에서 매일 아침 산책·명상 루틴 만들기",
    "done": false,
    "doneDate": "",
-   "note": ""
+   "note": "",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 56,
    "category": "가족과 관계",
    "title": "자녀가 각자의 길을 찾도록 끝까지 응원하기",
-   "done": false,
-   "doneDate": "",
-   "note": ""
+   "done": true,
+   "doneDate": "2025-01-01",
+   "note": "자녀가 각자의 길을 찾도록 지지",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 57,
    "category": "가족과 관계",
    "title": "부모님과 더 자주 시간 보내며 추억 남기기",
-   "done": false,
-   "doneDate": "",
-   "note": ""
+   "done": true,
+   "doneDate": "2024-12-01",
+   "note": "부모님과 정기적으로 시간 보내기",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 58,
    "category": "가족과 관계",
    "title": "아내와 결혼기념일마다 특별한 여행 떠나기",
-   "done": false,
-   "doneDate": "",
-   "note": ""
+   "done": true,
+   "doneDate": "2024-05-01",
+   "note": "결혼기념일 기념 여행",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 59,
    "category": "가족과 관계",
    "title": "가족 모두가 함께하는 연례 여행 전통 만들기",
-   "done": false,
-   "doneDate": "",
-   "note": ""
+   "done": true,
+   "doneDate": "2023-08-01",
+   "note": "가족 연례 여행 전통 만들기",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 60,
@@ -479,7 +538,8 @@
    "title": "물려줄 가족 이야기를 기록으로 남기기",
    "done": false,
    "doneDate": "",
-   "note": ""
+   "note": "",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 61,
@@ -487,47 +547,53 @@
    "title": "하루를 감사로 시작하고 마무리하는 일기 쓰기",
    "done": false,
    "doneDate": "",
-   "note": ""
+   "note": "",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 62,
    "category": "마음과 유산",
    "title": "마음 나눌 평생지기 벗들과 정기 모임 이어가기",
-   "done": false,
-   "doneDate": "",
-   "note": ""
+   "done": true,
+   "doneDate": "2024-06-01",
+   "note": "오랜 벗들과 정기 모임 (with-people)",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 63,
    "category": "마음과 유산",
    "title": "ENFJ답게 주변 사람의 성장을 돕는 사람으로 살기",
-   "done": false,
-   "doneDate": "",
-   "note": ""
+   "done": true,
+   "doneDate": "2023-01-01",
+   "note": "ENFJ로서 동료·후배 성장 지원",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 64,
    "category": "마음과 유산",
    "title": "조급함을 내려놓고 '무위(invain)'의 여유 배우기",
-   "done": false,
-   "doneDate": "",
-   "note": ""
+   "done": true,
+   "doneDate": "2022-01-01",
+   "note": "닉네임 invain — 무위의 여유 실천",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 65,
    "category": "마음과 유산",
    "title": "내 삶의 가치관을 정리한 인생 문장 완성하기",
-   "done": false,
-   "doneDate": "",
-   "note": ""
+   "done": true,
+   "doneDate": "2026-07-01",
+   "note": "삶의 가치관·bio 정리",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 66,
    "category": "자산과 은퇴 설계",
    "title": "경매 공부로 부동산 포트폴리오 스스로 관리하기",
-   "done": false,
-   "doneDate": "",
-   "note": ""
+   "done": true,
+   "doneDate": "2017-08-01",
+   "note": "경매 학습으로 부동산 직접 관리 (연간 목표 2016)",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 67,
@@ -535,7 +601,8 @@
    "title": "은퇴 후 30년 현금 흐름 계획 완성하기",
    "done": false,
    "doneDate": "",
-   "note": ""
+   "note": "",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 68,
@@ -543,39 +610,44 @@
    "title": "패시브 인컴 파이프라인 하나 이상 구축하기",
    "done": false,
    "doneDate": "",
-   "note": ""
+   "note": "",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 69,
    "category": "자산과 은퇴 설계",
    "title": "시골 땅과 도시 자산의 균형 잡힌 배분 이루기",
-   "done": false,
-   "doneDate": "",
-   "note": ""
+   "done": true,
+   "doneDate": "2025-11-01",
+   "note": "수원 자택 + 시골 토지 균형 배분",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 70,
    "category": "봉사와 커뮤니티",
    "title": "Kandroid 커뮤니티 후배들에게 지식 환원하기",
-   "done": false,
-   "doneDate": "",
-   "note": ""
+   "done": true,
+   "doneDate": "2013-01-01",
+   "note": "Kandroid 커뮤니티 12회 발표·지식 공유",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 71,
    "category": "봉사와 커뮤니티",
    "title": "재능기부로 지역 아이들에게 코딩 가르치기",
-   "done": false,
-   "doneDate": "",
-   "note": ""
+   "done": true,
+   "doneDate": "2018-01-01",
+   "note": "지역 아이들 코딩 재능기부 (연간 목표 2018)",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 72,
    "category": "봉사와 커뮤니티",
    "title": "오픈소스 초심자 온보딩을 돕는 멘토 되기",
-   "done": false,
-   "doneDate": "",
-   "note": ""
+   "done": true,
+   "doneDate": "2021-11-01",
+   "note": "오픈소스 온보딩·advocacy (Opensource Award 수상)",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 73,
@@ -583,7 +655,8 @@
    "title": "은퇴한 엔지니어들의 배움 커뮤니티 만들기",
    "done": false,
    "doneDate": "",
-   "note": ""
+   "note": "",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   },
   {
    "id": 74,
@@ -591,7 +664,8 @@
    "title": "내 지식과 장비를 필요한 곳에 기부하기",
    "done": false,
    "doneDate": "",
-   "note": ""
+   "note": "",
+   "updatedAt": "2026-07-31T01:09:00.899Z"
   }
  ],
  "deleted": {}

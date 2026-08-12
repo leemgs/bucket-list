@@ -87,5 +87,10 @@ const SEED_DATA_2NDLIFE = [
  { "id": 71, "category": "봉사와 커뮤니티", "title": "재능기부로 지역 아이들에게 코딩 가르치기",            "done": false, "doneDate": "", "note": "" },
  { "id": 72, "category": "봉사와 커뮤니티", "title": "오픈소스 초심자 온보딩을 돕는 멘토 되기",            "done": false, "doneDate": "", "note": "" },
  { "id": 73, "category": "봉사와 커뮤니티", "title": "은퇴한 엔지니어들의 배움 커뮤니티 만들기",            "done": false, "doneDate": "", "note": "" },
- { "id": 74, "category": "봉사와 커뮤니티", "title": "내 지식과 장비를 필요한 곳에 기부하기",             "done": false, "doneDate": "", "note": "" }
+ { "id": 74, "category": "봉사와 커뮤니티", "title": "내 지식과 장비를 필요한 곳에 기부하기",             "done": false, "doneDate": "", "note": "" },
+
+ { "id": 75, "category": "오픈소스와 기술", "title": "ISMS-P(정보보호·개인정보보호 관리체계) 보안 자격증 취득하기",  "done": false, "doneDate": "", "note": "" },
+ { "id": 76, "category": "연구와 논문",     "title": "의학 저널에 논문 투고하기",                       "done": false, "doneDate": "", "note": "" },
+ { "id": 77, "category": "귀농과 땅",       "title": "정부지원 은퇴자 체류형 농장 농업 창업 자금 지원사업에 응모하기", "done": false, "doneDate": "", "note": "" },
+ { "id": 78, "category": "연구와 논문",     "title": "AI 에이전트 기반 1인 연구소 사업자 등록·개설하기",         "done": false, "doneDate": "", "note": "" }
 ];

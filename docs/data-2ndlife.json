@@ -1,5 +1,5 @@
 {
- "savedAt": "2026-08-12T23:09:08.312Z",
+ "savedAt": "2026-09-03T09:46:05.042Z",
  "items": [
   {
    "id": 1,
@@ -671,19 +671,19 @@
    "id": 75,
    "category": "오픈소스와 기술",
    "title": "ISMS-P(정보보호·개인정보보호 관리체계) 보안 자격증 취득하기",
-   "done": false,
-   "doneDate": "",
-   "note": "",
-   "updatedAt": "2026-08-12T23:09:08.312Z"
+   "done": true,
+   "doneDate": "2026-08-15",
+   "note": "ISMS-P 인증심사원 자격 취득 완료",
+   "updatedAt": "2026-09-03T09:46:05.042Z"
   },
   {
    "id": 76,
    "category": "연구와 논문",
    "title": "의학 저널에 논문 투고하기",
-   "done": false,
-   "doneDate": "",
-   "note": "",
-   "updatedAt": "2026-08-12T23:09:08.312Z"
+   "done": true,
+   "doneDate": "2026-08-20",
+   "note": "의학 저널에 논문 투고 완료",
+   "updatedAt": "2026-09-03T09:46:05.042Z"
   },
   {
    "id": 77,

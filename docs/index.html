@@ -397,9 +397,67 @@ footer a{color:var(--accent);font-weight:700}
   .card .ops{opacity:1}
   .hero-controls{position:static;top:auto;justify-content:center;margin:0 auto 16px}
 }
+
+/* ---------- Access gate (invite-only) ---------- */
+body.gate-locked{overflow:hidden}
+.site-gate{
+  position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;
+  padding:22px;
+  background:
+    radial-gradient(1000px 500px at 50% -10%,rgba(255,233,176,.14),transparent 60%),
+    linear-gradient(135deg,#1e3d2f 0%,#2f5d46 45%,#3d7a5d 100%);
+}
+.site-gate[hidden]{display:none!important}
+.gate-card{
+  width:100%;max-width:400px;background:var(--card);border-radius:20px;
+  box-shadow:var(--shadow-lg);padding:34px 28px 26px;text-align:center;
+  animation:pop .22s;
+}
+.gate-emoji{font-size:40px;line-height:1;margin-bottom:10px}
+.gate-title{font-family:"Nanum Myeongjo",serif;font-size:21px;font-weight:800;color:var(--ink);margin-bottom:8px}
+.gate-desc{font-size:13.5px;color:var(--ink-soft);line-height:1.6;margin-bottom:20px;word-break:keep-all}
+.gate-form{display:flex;flex-direction:column;gap:10px}
+.gate-input{
+  width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px;
+  background:#fbfaf7;outline:none;font-size:15px;color:var(--ink);text-align:center;letter-spacing:.04em;
+  transition:border-color .15s;
+}
+.gate-input:focus{border-color:var(--accent)}
+.gate-btn{
+  width:100%;padding:12px;border-radius:12px;background:var(--accent);color:#fff;
+  font-weight:700;font-size:15px;transition:background .15s;
+}
+.gate-btn:hover{background:#336749}
+.gate-btn:disabled{opacity:.6;cursor:wait}
+.gate-error{
+  margin-top:12px;font-size:13px;font-weight:600;color:var(--danger);
+  background:#f7e4e1;border-radius:10px;padding:9px 12px;word-break:keep-all;
+}
+.gate-note{
+  margin-top:16px;font-size:11.5px;color:var(--ink-soft);line-height:1.55;
+  border-top:1px solid var(--line);padding-top:14px;word-break:keep-all;
+}
 </style>
+<script defer src="assets/site.js"></script>
 </head>
 <body>
+
+<!-- 초대받은 사용자용 접속 코드 게이트 (로직: assets/site.js) -->
+<div id="siteGate" class="site-gate" role="dialog" aria-modal="true" aria-labelledby="gateTitle">
+  <div class="gate-card">
+    <div class="gate-emoji" aria-hidden="true">🔒</div>
+    <h1 id="gateTitle" class="gate-title">초대받은 분을 위한 공간</h1>
+    <p class="gate-desc">이 사이트는 초대받은 분들을 위한 정보 공간입니다.<br>접속 코드를 입력해 주세요.</p>
+    <form id="gateForm" class="gate-form" autocomplete="off">
+      <input type="password" id="gateInput" class="gate-input" placeholder="접속 코드"
+             autocomplete="off" aria-label="접속 코드" />
+      <button type="submit" class="gate-btn">입장하기</button>
+    </form>
+    <div id="gateError" class="gate-error" role="alert" hidden></div>
+    <div class="gate-note">⚠️ 정적 사이트의 간단한 접근 제한이며, 민감정보 보호 목적이 아닙니다.
+      해시가 클라이언트에 노출되므로 진짜 보안 경계로 사용하지 마세요.</div>
+  </div>
+</div>
 
 <header class="hero">
   <div class="hero-inner">

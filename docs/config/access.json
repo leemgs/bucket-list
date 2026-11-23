@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "note": "초대받은 사용자용 접속 코드의 SHA-256 해시만 저장합니다. 평문 비밀번호는 저장하지 않습니다. 코드 변경 방법은 README.md 참고.",
+  "codes": [
+    {
+      "label": "owner",
+      "digest": "af36ce4dfe30e46821f11b640e9cc2d178a9c04a66f0d18cb21273358abeefaa"
+    },
+    {
+      "label": "guest",
+      "digest": "a05f757677aa59387f11e957a42ed160dfab5539f7ce9f968daa66b7a29c0950"
+    }
+  ]
+}
